@@ -10,7 +10,7 @@
 
 ### for i in range(T) :
     ### a, b = map(int, input().split())
-    ### print(a**b%10)
+    ### print(a**b%10)  # 숫자가 커지면 시간복잡도가 증가하는 듯
 
 
 # 코드2 - 분산 처리
@@ -23,19 +23,19 @@ T = int(input())
 
 for i in range(T) :
     a, b = map(int, input().split())
-    num = a % 10
+    num = a % 10 #10으로 나눈 나머지 일의 자리만 남김
     
-    if num == 0 :
-        print(10)
-    elif num == 1 or num == 5 or num == 6 :
-        print(num)
-    elif num == 4 or num == 9 :
-        if b%2 == 0 :
-            print(num**2%10)
+    if num == 0 : #10으로 나눈 나머지가 0이라면 
+        print(10) #10번 컴퓨터 이용
+    elif num == 1 or num == 5 or num == 6 : #1, 5, 6은 어떤 지수(b)로 제곱하더라도
+        print(num) #일의 자리가 본인과 같은 수로 끝남
+    elif num == 4 or num == 9 : #4, 9는 지수(b)가 홀수인지 짝수인지 구분
+        if b%2 == 0 : #지수가 짝수라면
+            print(num**2%10) #2제곱을 10으로 나눈 후 일의 자리 출력
         else :
-            print(num)
-    else :
-        if b%4 == 0 :
-            print(num**4%10)
+            print(num) #홀수면 그대로 본인 출력
+    else : #나머지 2, 3, 7, 8은 일의 자리가 4개 주기로 순환함
+        if b%4 == 0 : #지수가 4의 배수라면
+            print(num**4%10) #4제곱을 10으로 나눈 후 일의 자리 출력
         else :
-            print(num**(b%4)%10)
+            print(num**(b%4)%10) #그 외에는 지수를 4로 나눈 후 일의 자리 출력
