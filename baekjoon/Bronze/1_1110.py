@@ -10,16 +10,18 @@
 
 N = int(input())
 
-cycle_len = 0
-cycle = 0
-new_num = 0
+num = N #초기 변수 설정, N값을 바꿔줘야 while문이 무한루프를 돌지 않음
+cycle_len = 0 #사이클 초기 길이 0
 
 while True :
-    cycle = (N//10) + (N%10)
-    new_num = ((N%10)*10) + (cycle%10)
-    cycle_len += 1
+    cycle = N//10 + N%10 #26에서 2+6부분.
+    new_num = (N%10)*10 + cycle%10 #26에서 6이 60, 2+8은 8로 68만들기
+    
+    cycle_len += 1 #사이클 길이 1씩 추가
 
-    if new_num == N :
+    N = new_num #N값 새로운 숫자로 바꿔줘야 while문 반복 시 첫 줄에서 바뀐 값으로 재실행됨
+
+    if new_num == num : #초기에 설정한 N값과, 새로운 값 비교
         break
 
 print(cycle_len)
