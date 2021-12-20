@@ -17,6 +17,3 @@ for i in range(M) :
     cups[cups_X], cups[cups_Y] = cups[cups_Y], cups[cups_X] #컵 위치 바꾸기
     
 print(cups[0])
-    
-    
-    
