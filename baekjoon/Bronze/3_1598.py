@@ -7,12 +7,7 @@
 
 N1, N2 = map(int, input().split())
 
-width = 0
-length = 0
+N1 -= 1 #시작 값이 1이므로 0부터 시작하도록 맞춰줌
+N2 -= 1
 
-if N1%4 == 0 :
-    width = 4
-else :
-    width = N1%4
-    
-for i in range(N2) :
+print(abs(N1//4 - N2//4)+abs(N1%4-N2%4))
