@@ -10,12 +10,18 @@
 
 N = int(input())
 
-students = []
-for _ in range(N) :
-    each_class = list(map(int, input().split()))
-    students.append(each_class)
+students = [list(map(int, input().split())) for _ in range(N)]
 
-cnt_class = []
+mx = -1
+idx = 0
+
 for i in range(N) :
-    for j in range(5) :
-        
+    cnt = 0
+    for j in range(1, N) :
+        for k in range(5) :
+            if students[i][k] == students[j][k] :
+                cnt += 1
+    if (mx < cnt) :
+        mx = cnt
+        idx = i
+print(idx)
