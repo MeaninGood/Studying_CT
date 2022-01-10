@@ -12,16 +12,39 @@ N = int(input())
 
 students = [list(map(int, input().split())) for _ in range(N)]
 
-mx = -1
-idx = 0
+mx = -1 # mx을 상관 없는 값으로 초기화, cnt가 하나도 카운트되지 않을 수 있음 
+idx = 0 # 반 출력할 것
 
 for i in range(N) :
-    cnt = 0
-    for j in range(1, N) :
+    cnt = 0 # cnt 0으로 초기화, i번 학생이 몇 명이랑 겹쳤는지 체크, i가 바뀔 때마다 초기화됨
+    for j in range(N) : 
         for k in range(5) :
-            if students[i][k] == students[j][k] :
-                cnt += 1
+            if students[i][k] == students[j][k] : # i번 학생의 반과 j번 학생의 반이 겹친 적 있는지 체크
+                cnt += 1 # 겹친 것만 카운트
+                break
     if (mx < cnt) :
-        mx = cnt
-        idx = i
-print(idx)
+        mx = cnt # max값 바꿔주기
+        idx = i # 반 바꿔주기
+
+print(idx+1)
+
+    """
+    <for문 구조>
+    1. 제일 바깥의 for문 지정 : 학생 번호 (n번 학생)
+    2. 이 for문 안에서 해야할 것
+        - i번 학생이 몇 명이랑 겹쳤는지
+        - i번 학생이랑 j번 학생이 겹친 적 있는지
+    
+    *같은 반이 었던 사람이 가장 많은 학생을 임시 반장으로 지정
+    -> 3번 학생과 4번 학생이 2학년, 3학년 때 두 번 같은 반이었어도 한 명으로 세어야 함
+
+    <갯수 카운트>
+    1. for i문 안에서 카운트 되어야 함
+    *2. cnt = i가 바뀔 때마다 초기화 // for i문 안에 있음 이 부분 맨날 보기
+
+    *mx = -1 로 설정한 부분 맨날 보기
+    *idx = 0 으로 지정하고 i로 바꿔주는 부분 맨날 보기
+
+    - 카운트해서 리스트에 저장해야 한다고 생각했는데 ㅠㅠ
+    - if문으로 조건 지정해서 idx바꿔주면 됨
+    """
