@@ -86,13 +86,13 @@ print(num) --> 12
 '''
 
 
-'''
-# print(sum(map(int, input()))) 결과
+
+print(sum(map(int, input().split())))
 ## 입력 : 54321
 ## 출력 : 15
 
-# print(sum(map(int,sys.stdin.readline().split()))) 결과
+# import sys
+# print(sum(map(int,sys.stdin.readline().split())))
 ## 입력 : 54321
 ## 출력 : 54321
 
-'''
