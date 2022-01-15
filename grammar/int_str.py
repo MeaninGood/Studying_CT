@@ -25,12 +25,12 @@
 
 # 나중에 다시 해보고 정리해놓기 대충 b[0] 하면 [ <- 나옴
 # a = list(range(1,11))
-# b = int(str(c))
+# b = int(str(a))
 # print(b)
 
 
 
-# 75 = 75 + 7 + 5 만들기
+# 75 = 7 + 5 만들기
 
 # a = 75
 # b = map(int, str(a))
@@ -44,6 +44,7 @@ print(sum(b)) # 출력 75
 
 '''
 
+
 '''
 a = 75
 b = int(str(a))
@@ -54,5 +55,5 @@ print(sum(b)) # typeError : 'int' object is not iterable
 
 a = 75
 b = map(int, str(a))
-print(sum(b)) # typeError : 'int' object is not iterable
+print(sum(b)) # 출력 12
 
