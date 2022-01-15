@@ -78,7 +78,7 @@ for j in range(len(numbers)) :
         
         
 
-''' 고양님 코드
+''' 다른 코드 1
 visited = [False for i in range(10010)]
 
 def nxt(x):
@@ -103,7 +103,7 @@ for i in range(1, 10001):
 '''
 
 
-''' 시잡님 코드
+''' 다른 코드 2
 lst = set([i for i in range(1,10001)])
 notSelf = set()
 sum = 0
@@ -121,7 +121,7 @@ for k in sorted(lst - notSelf):
 '''
 
 
-''' 싸합님 코드
+''' 다른 코드 3
 not_self = [True]*10001
 
 for i in range(1,10001):
