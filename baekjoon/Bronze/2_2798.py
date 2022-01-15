@@ -115,15 +115,16 @@ import sys
 n, m = map(int, sys.stdin.readline().split())
 cards = list(map(int, sys.stdin.readline().split()))
 
-result = 9999999
+result = 9999999 # result에 결과에 영향이 가지 않는 무관한 값 입력
 for i in range(n-2) : # 맨 첫장부터 n-2까지 도는 거
     # sum_3cards = 0
     for j in range(i+1, n-1) : # 그 다음장부터 n-1까지 도는 거
         for k in range(j+1, n) : # 3번째 장부터 마지막장까지 도는 거
             sum_3cards = cards[i]+cards[j]+cards[k]
             if m - sum_3cards <= result and m>=sum_3cards:
-                result = m - sum_3cards
-print(m-result)
+                # m이 3카드의 합보다 크다면
+                result = m - sum_3cards # result를 m에서 sum_3cards를 뺀 값으로 대체
+print(m-result) # m에서 차이값 뺀 것(result에 저장됨) 출력
 
 '''
 
