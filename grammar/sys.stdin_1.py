@@ -38,8 +38,11 @@ print(nums)
 x, y = sys.stdin.readline().split()
 
 ## 여러 줄 입력
-N = input()
+import sys
+N = int(input())
 a= [sys.stdin.readline() for _ in range(N)]
+
+print(a)
 
 ## sys.stdin.readline()
 for x in sys.stdin.readline() :
@@ -87,7 +90,7 @@ print(num) --> 12
 
 
 
-print(sum(map(int, input().split())))
+# print(sum(map(int, input().split())))
 ## 입력 : 54321
 ## 출력 : 15
 
@@ -95,4 +98,3 @@ print(sum(map(int, input().split())))
 # print(sum(map(int,sys.stdin.readline().split())))
 ## 입력 : 54321
 ## 출력 : 54321
-
