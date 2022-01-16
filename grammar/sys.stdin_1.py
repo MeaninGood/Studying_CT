@@ -37,12 +37,18 @@ print(nums)
 ## 한 줄 입력
 x, y = sys.stdin.readline().split()
 
-## 여러 줄 입력
+## 여러 줄 입력 # 개행문자 함께 출력됨
 import sys
 N = int(input())
 a= [sys.stdin.readline() for _ in range(N)]
 
 print(a)
+
+## ['1\n', '2\n']
+
+
+
+
 
 ## sys.stdin.readline()
 for x in sys.stdin.readline() :
