@@ -36,8 +36,8 @@ for i in Nli :
         if i % j == 0 :
             cntx += 1
         
-        if cntx == 1 :
-            cnt += 1
+    if cntx == 0 :
+        cnt += 1
 print(cnt)
 
 

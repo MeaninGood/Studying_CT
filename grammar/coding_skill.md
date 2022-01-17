@@ -1,7 +1,5 @@
 ## 배열을 이동한 코드 스킬
 
-
-
 ### 1. 조건문 - > 배열화 코드 정의
 
 ```python
@@ -14,7 +12,7 @@ elif x = 3:
 ...
 ```
 
-+ 해당 코드를 배열화 한다면 아래와 같다. 
++ 해당 코드를 배열화 한다면 아래와 같다.
 
 ```python
 arr = [0,'aaa','bbb','ccc',...]
@@ -76,27 +74,27 @@ while True: # 해당 코드는 0 이 나올 때까지 반복한다.
 
 | 문제번호 | 풀이 |
 | ------------------------------------------------------------ | ---- |
-| 1. <img src="https://d2gd6pc034wcta.cloudfront.net/tier/1.svg" width="20" height="20"> [[3003] 킹, 퀸, 룩, 비숍, 나이트, 폰](https://www.acmicpc.net/problem/3003)                                                      | [이동](#[3003] 킹, 퀸, 룩, 비숍, 나이트, 폰) |
-| 2. <img src="https://d2gd6pc034wcta.cloudfront.net/tier/3.svg" width="20" height="20">[[1284] 집주소](https://www.acmicpc.net/problem/1284) | [이동](#[1284] 집주소) |
-| 3. <img src="https://d2gd6pc034wcta.cloudfront.net/tier/2.svg" width="20" height="20">[[17362] 수학은 체육과목 입니다 2](https://www.acmicpc.net/problem/17362) | [이동](#[17362] 수학은 체육과목 입니다) |
-| 4. <img src="https://d2gd6pc034wcta.cloudfront.net/tier/3.svg" width="20" height="20">[[1864] 문어 숫자](https://www.acmicpc.net/problem/1864) | [이동](#[1864] 문어 숫자) |
-| 5. <img src="https://d2gd6pc034wcta.cloudfront.net/tier/3.svg" width="20" height="20"> [[2490] 윷놀이](https://www.acmicpc.net/problem/2490) | [이동](#[2490] 윷놀이) |
-| 6. <img src="https://d2gd6pc034wcta.cloudfront.net/tier/4.svg" width="20" height="20"> [[1264] 모음의 개수](https://www.acmicpc.net/problem/1264) | [이동](#[1264] 모음의 개수) |
-| 7. <img src="https://d2gd6pc034wcta.cloudfront.net/tier/4.svg" width="20" height="20"> [[2037] 문자메시지](https://www.acmicpc.net/problem/2037) | [이동](#[2037]문자메시지) |
-| 8. <img src="https://d2gd6pc034wcta.cloudfront.net/tier/4.svg" width="20" height="20"> [[2520] 팬케이크 사랑](https://www.acmicpc.net/problem/2520) | [이동](#[2520] 펜케이크 사랑) |
-| 9. <img src="https://d2gd6pc034wcta.cloudfront.net/tier/4.svg" width="20" height="20"> [[2789] 유학 금지](https://www.acmicpc.net/problem/2789) | [이동](#[2789] 유학 금지) |
-| 10. <img src="https://d2gd6pc034wcta.cloudfront.net/tier/4.svg" width="20" height="20"> [[2948] 2009년](https://www.acmicpc.net/problem/2948) | [이동](#[2948] 2009년) |
-| 11. <img src="https://d2gd6pc034wcta.cloudfront.net/tier/4.svg" width="20" height="20"> [[2966] 찍기](https://www.acmicpc.net/problem/2966) | [이동](#[2966] 찍기) |
-| 12. <img src="https://d2gd6pc034wcta.cloudfront.net/tier/4.svg" width="20" height="20"> [[3154] 알람시계](https://www.acmicpc.net/problem/3154) | [이동](#[3154] 알람시계]) |
-| 13. <img src="https://d2gd6pc034wcta.cloudfront.net/tier/4.svg" width="20" height="20"> [[4435] 중간계 전쟁](https://www.acmicpc.net/problem/4435) | [이동](#[4435] 중간계 전쟁) |
-| 14. <img src="https://d2gd6pc034wcta.cloudfront.net/tier/4.svg" width="20" height="20"> [[4606] The Seven Percent Solution](https://www.acmicpc.net/problem/4606) | [이동]([4606]The Seven Percent Solution) |
-| 15. <img src="https://d2gd6pc034wcta.cloudfront.net/tier/4.svg" width="20" height="20"> [[5585] 거스름돈](https://www.acmicpc.net/problem/5585) | [이동](#[5585] 거스름돈) |
-| 16. <img src="https://d2gd6pc034wcta.cloudfront.net/tier/4.svg" width="20" height="20"> [[5622] 다이얼](https://www.acmicpc.net/problem/5622) | [이동](#[5622] 다이얼) |
-| 17. <img src="https://d2gd6pc034wcta.cloudfront.net/tier/5.svg" width="20" height="20"> [[6368] P,MTHBGWB](https://www.acmicpc.net/problem/6368) | [이동](#[6368] P,MTHBGWB) |
-| 18. <img src="https://d2gd6pc034wcta.cloudfront.net/tier/4.svg" width="20" height="20"> [[6750] Rotating letters](https://www.acmicpc.net/problem/6750) | [이동](#[6750] Rotating letters) |
-| 19. <img src="https://d2gd6pc034wcta.cloudfront.net/tier/5.svg" width="20" height="20"> [[6765] Icon Scaling](https://www.acmicpc.net/problem/6765) | [이동](#[6765] Icon Scaling) |
-| 20. <img src="https://d2gd6pc034wcta.cloudfront.net/tier/3.svg" width="20" height="20"> [[11800] Tawla](https://www.acmicpc.net/problem/11800) | [이동](#[11800] Tawla) |
-| 21. <img src="https://d2gd6pc034wcta.cloudfront.net/tier/4.svg" width="20" height="20"> [[10551] STROJOPIS](https://www.acmicpc.net/problem/10551) | [이동]([10551] STROJOPIS) |
+| 1. <img src="https://d2gd6pc034wcta.cloudfront.net/tier/1.svg" width="20" height="20"> [[3003] 킹, 퀸, 룩, 비숍, 나이트, 폰](https://www.acmicpc.net/problem/3003)                                                      | [이동](#3003-킹-퀸-룩-비숍-나이트-폰) |
+| 2. <img src="https://d2gd6pc034wcta.cloudfront.net/tier/3.svg" width="20" height="20">[[1284] 집주소](https://www.acmicpc.net/problem/1284) | [이동](#1284-집주소) |
+| 3. <img src="https://d2gd6pc034wcta.cloudfront.net/tier/2.svg" width="20" height="20">[[17362] 수학은 체육과목 입니다 2](https://www.acmicpc.net/problem/17362) | [이동](#17362-수학은-체육과목-입니다) |
+| 4. <img src="https://d2gd6pc034wcta.cloudfront.net/tier/3.svg" width="20" height="20">[[1864] 문어 숫자](https://www.acmicpc.net/problem/1864) | [이동](#1864-문어-숫자) |
+| 5. <img src="https://d2gd6pc034wcta.cloudfront.net/tier/3.svg" width="20" height="20"> [[2490] 윷놀이](https://www.acmicpc.net/problem/2490) | [이동](#2490-윷놀이) |
+| 6. <img src="https://d2gd6pc034wcta.cloudfront.net/tier/4.svg" width="20" height="20"> [[1264] 모음의 개수](https://www.acmicpc.net/problem/1264) | [이동](#1264-모음의-개수) |
+| 7. <img src="https://d2gd6pc034wcta.cloudfront.net/tier/4.svg" width="20" height="20"> [[2037] 문자메시지](https://www.acmicpc.net/problem/2037) | [이동](#2037-문자메시지) |
+| 8. <img src="https://d2gd6pc034wcta.cloudfront.net/tier/4.svg" width="20" height="20"> [[2520] 팬케이크 사랑](https://www.acmicpc.net/problem/2520) | [이동](#2520-펜케이크-사랑) |
+| 9. <img src="https://d2gd6pc034wcta.cloudfront.net/tier/4.svg" width="20" height="20"> [[2789] 유학 금지](https://www.acmicpc.net/problem/2789) | [이동](#2789-유학-금지) |
+| 10. <img src="https://d2gd6pc034wcta.cloudfront.net/tier/4.svg" width="20" height="20"> [[2948] 2009년](https://www.acmicpc.net/problem/2948) | [이동](#2948-2009년) |
+| 11. <img src="https://d2gd6pc034wcta.cloudfront.net/tier/4.svg" width="20" height="20"> [[2966] 찍기](https://www.acmicpc.net/problem/2966) | [이동](#2966-찍기) |
+| 12. <img src="https://d2gd6pc034wcta.cloudfront.net/tier/4.svg" width="20" height="20"> [[3154] 알람시계](https://www.acmicpc.net/problem/3154) | [이동](#3154-알람시계]) |
+| 13. <img src="https://d2gd6pc034wcta.cloudfront.net/tier/4.svg" width="20" height="20"> [[4435] 중간계 전쟁](https://www.acmicpc.net/problem/4435) | [이동](#4435-중간계-전쟁) |
+| 14. <img src="https://d2gd6pc034wcta.cloudfront.net/tier/4.svg" width="20" height="20"> [[4606] The Seven Percent Solution](https://www.acmicpc.net/problem/4606) | [이동](#4606The-Seven-Percent-Solution) |
+| 15. <img src="https://d2gd6pc034wcta.cloudfront.net/tier/4.svg" width="20" height="20"> [[5585] 거스름돈](https://www.acmicpc.net/problem/5585) | [이동](#5585-거스름돈) |
+| 16. <img src="https://d2gd6pc034wcta.cloudfront.net/tier/4.svg" width="20" height="20"> [[5622] 다이얼](https://www.acmicpc.net/problem/5622) | [이동](#5622-다이얼) |
+| 17. <img src="https://d2gd6pc034wcta.cloudfront.net/tier/5.svg" width="20" height="20"> [[6368] P,MTHBGWB](https://www.acmicpc.net/problem/6368) | [이동](#6368-PMTHBGWB) |
+| 18. <img src="https://d2gd6pc034wcta.cloudfront.net/tier/4.svg" width="20" height="20"> [[6750] Rotating letters](https://www.acmicpc.net/problem/6750) | [이동](#6750-Rotating-letters) |
+| 19. <img src="https://d2gd6pc034wcta.cloudfront.net/tier/5.svg" width="20" height="20"> [[6765] Icon Scaling](https://www.acmicpc.net/problem/6765) | [이동](#6765-Icon-Scaling) |
+| 20. <img src="https://d2gd6pc034wcta.cloudfront.net/tier/3.svg" width="20" height="20"> [[11800] Tawla](https://www.acmicpc.net/problem/11800) | [이동](#11800-Tawla) |
+| 21. <img src="https://d2gd6pc034wcta.cloudfront.net/tier/4.svg" width="20" height="20"> [[10551] STROJOPIS](https://www.acmicpc.net/problem/10551) | [이동](#10551-STROJOPIS) |
 
 
 
