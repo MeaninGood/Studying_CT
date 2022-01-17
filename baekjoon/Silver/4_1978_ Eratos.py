@@ -26,12 +26,14 @@
 
 import sys
 
-# n = int(input())
+n = int(input())
 Nli = list(map(int, sys.stdin.readline().split()))
 
 cnt = 0
 for i in Nli :
     cntx = 0
+    if i == 1 :
+        continue 
     for j in range(2, i) :
         if i % j == 0 :
             cntx += 1
@@ -39,6 +41,3 @@ for i in Nli :
     if cntx == 0 :
         cnt += 1
 print(cnt)
-
-
-    
