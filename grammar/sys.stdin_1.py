@@ -104,3 +104,14 @@ print(num) --> 12
 # print(sum(map(int,sys.stdin.readline().split())))
 ## 입력 : 54321
 ## 출력 : 54321
+
+
+import sys
+
+li = []
+
+for i in range(5) :
+    li.append(sys.stdin.readline().strip()) # 한 줄 씩 입력받을 때 .strip()
+    
+
+print(li)

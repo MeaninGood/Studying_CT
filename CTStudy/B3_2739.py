@@ -12,7 +12,12 @@
 
 '''
 
+'''
+1. 구구단은 2 x (1~9)까지이므로 1~9를 range로 잡아줌 -> rnage(1, 10)
+2. n 그대로 두고 구구단 출력
+'''
+
 n = int(input())
 
-for i in range(1,10) :
-    print(f'{n} * {i} = {n*i}')
+for i in range(1,10) : # n * (1~9)
+    print(f'{n} * {i} = {n*i}') # f포매팅으로 출력

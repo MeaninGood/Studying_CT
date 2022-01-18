@@ -12,27 +12,19 @@
 (출력) -1 0 0 1 0 7
 '''
 
+'''
+1. 올바른 chess들 리스트 생성
+2. 입력을 리스트로 받고, 각 인덱스마다 올바른 chess말들과 비교해줄 것
+3. 올바른 것 - 입력받은 것 빼기만 하면 끝!
+'''
+chess = [1, 1, 2, 2, 2, 8] # 원래의 체스 말
 
-chess = [1, 1, 2, 2, 2, 8]
+cnt = list(map(int, input().split())) # 입력받은 체스 말
 
-cnt = list(map(int, input().split()))
+for i in range(len(cnt)) : # 둘 다 길이 같기 때문에 len(cnt)나 len(chess)나 무관
+    #range(6)도 괜찮지만, 정보를 좀 더 직관적으로 전달하기 위해 len 사용
+    print(chess[i] - cnt[i], end = ' ') # 올바른 체스 - 입력 받은 체스 출력
 
-for i in range(len(cnt)) :
-    print(chess[i] - cnt[i], end = ' ')
-
-
-# ==== 배열 이용하기 (2)
-# chess = [1, 1, 2, 2, 2, 8]
-
-# cnt = list(map(int, input().split()))
-
-# n = len(cnt)
-# result = []
-
-# for i in range(n) :
-#     result.append(chess[i] - cnt[i])
-    
-# print(*result)
         
         
     
