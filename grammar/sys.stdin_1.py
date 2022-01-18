@@ -105,7 +105,7 @@ print(num) --> 12
 ## 입력 : 54321
 ## 출력 : 54321
 
-
+'''
 import sys
 
 li = []
@@ -115,3 +115,5 @@ for i in range(5) :
     
 
 print(li)
+
+'''
