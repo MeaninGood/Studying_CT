@@ -41,16 +41,35 @@ while 1 :
         break
 
     n = len(num)    
-    ans = 0
-
-    for i in range(n) :
-        ans &= oct(d[num[i]])
+    ans = 0 # 여기 -- 다음에 확인해보기
     
+    for i in range(n) :
+        ans &= oct(d[num[i]]) # 여기 -- 다음에 확인해보기
     print(int(ans, 8))
 
-ans = 0
-mul = 1
-for i in range(len(str))[::-1]:
-   ans += arr[str[i]] * mul
-   mul *= 8
 
+# ======================
+
+
+
+sign = "-\(@?>&%"
+
+d = {}
+
+for i in range(8)
+   d[sign[i]] = i
+   
+d['/'] = -1
+
+
+while 1 :
+    num = input()
+    if num == '#' :
+        break
+
+    n = len(num)    
+    ans = 0
+    mul = 1
+    for i in range(len(str))[::-1]:
+        ans += arr[str[i]] * mul
+        mul *= 8
