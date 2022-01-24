@@ -26,43 +26,20 @@
 
 
 
-# import sys
+import sys
 
-# m, n = map(int, sys.stdin.readline().split())
+m, n = map(int, sys.stdin.readline().split())
 
 
-# # n = 3, m = 5 일 때
-# arr = [ 0 for i in range(n)]
-# def recur(cur, start) : 
-#     if cur == n :  # arr[cur]에서 cur이 n과 같아지면 return
-#         # for i in range(n-1) :
-#         #     if arr[i] < arr[i+1] :
-#         return print(*arr)
-#         # return print(*arr)
-#     # for i in range(n-1) :
-#     #     if arr[i] < arr[i+1] and cur == n :
-#     #         return print(*arr)
-            
-#     for i in range(start, m+1) : # start부터 m+1까지 순열 생성
-#         # if arr[cur] >= arr[cur+1] :
-#         #     continue               
-#         arr[cur] = i # arr[0], arr[1], arr[2] ... arr의 인덱스
-#         recur(cur + 1, start + 1) # cur +1 자리 옆으로 넘김, start +1로 오름차순 만들어줌 
-        
-# recur(0, 1)
-        
-        
-
-n, m = map(int, input().split())
-arr = [0 for i in range(n)]
-
-def recur(cur, start) :
-    if cur == n :
-        print(*arr)
-        return
-    
-    for i in range(start, m+1) :
-        arr[cur] = i
-        recur(cur + 1, i + 1)
+# n = 3, m = 5 일 때
+arr = [ 0 for i in range(n)]
+def recur(cur, start) : 
+    if cur == n :  # arr[cur]에서 cur이 n과 같아지면 return   
+        return print(*arr)
+   
+    for i in range(start, m+1) : # start부터 m+1까지 순열 생성
+          
+        arr[cur] = i # arr[0], arr[1], arr[2] ... arr의 인덱스
+        recur(cur + 1, i + 1) # cur +1 자리 옆으로 넘김, start를 i+1 바꿔서 오름차순 만들어줌 
         
 recur(0, 1)

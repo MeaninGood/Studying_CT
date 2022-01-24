@@ -305,11 +305,11 @@ visited[k] = [False, False, False, False, True] # 4일 때 - arr[2] = 4
 '''
 
 n, m = map(int, input().split())
-arr = [0 for i in range(110)]
+arr = [0 for i in range(m)]
 
 def recur(cur, start) :
     if cur == n :
-        print(*cur)
+        print(*arr)
         return
     
     for i in range(start, m) :
