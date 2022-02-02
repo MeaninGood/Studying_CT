@@ -46,7 +46,7 @@
 # print(sorted(heit))           
     
     
-
+''' 기존 코드 (투포인터 배우기 전)
 heit = []
 for i in range(9) :
     heit.append(int(input()))
@@ -75,3 +75,39 @@ heit.sort()
 
 for l in heit :
     print(l)
+    
+'''
+
+
+import sys
+
+# 리스트로 입력 받아줌
+arr = [int(sys.stdin.readline()) for heit in range(9)]
+# arr = []
+# for heit in range(9) :
+#     arr.append(int(sys.stdin.readline()))
+total = sum(arr) # 미리 합계 변수 지정
+                # while문에 일일이 sum(arr)를 해주면 while을 도는 동안
+                # sum을 계속 수행하므로, 애초에 변수로 지정해줌
+
+arr.sort() # 정렬
+
+
+s = 0 # s = 0에서 시작
+e = 8 # e = 8에서 시작(리스트 인덱스 8까지니까)
+
+while s < e : # s == e가 되면 종료
+    # 7명의 합이 100이 되는 애들이 아니라, 100이 안 되는 2명을 찾자
+    if arr[s] + arr[e] == total - 100 : # 탈출 조건 지정, total - 100해주면 됨
+        for i in range(9) : # 위의 리스트를 돌면서
+            if i == s or i == e : # i가 s 혹은 e와 같으면 출력 안 하고 continue
+                continue
+            print(arr[i]) # s와 e를 제외한 애들만 출력해줌
+            
+        break # 출력 다 했으면 멈춰줌 (안 그러면 무한히 출력함)
+        
+    elif arr[s] + arr[e] < total - 100 : # 합이 작으면
+        s += 1 # s를 뒤로 보내줌, 오름차순이기 때문
+    
+    else :
+        e -= 1 # 합이 더 크면 e를 앞으로 보내줌, 오름차순이기 때문

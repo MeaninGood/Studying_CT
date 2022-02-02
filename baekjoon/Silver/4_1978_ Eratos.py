@@ -27,10 +27,10 @@
 import sys
 
 n = int(input())
-Nli = list(map(int, sys.stdin.readline().split()))
+nli = list(map(int, sys.stdin.readline().split()))
 
 cnt = 0
-for i in Nli :
+for i in nli :
     cntx = 0
     if i == 1 :
         continue 
