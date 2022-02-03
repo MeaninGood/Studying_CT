@@ -38,8 +38,7 @@
 
 import sys
 
-
-n, x = map(int, sys.stdin.readline().split())
+n, m = map(int, sys.stdin.readline().split())
 
 arr = list(map(int, sys.stdin.readline().split()))
 
@@ -47,10 +46,32 @@ arr.sort()
 
 s = 0
 e = n-1
-x = n
+x = n # 용량이 다 찬 용기는 제외시킬 것이기 때문에, n 값을 줄여야 함
 cnt = 0
 
-for i in range(n)[::-1] :
-    print(i)
+for i in range(n)[::-1] : # 역순으로 인덱스 돌면서
+    if arr[i] == m : # 맨 끝에서부터 m과 같은 값이 있으면
+        cnt += 1 # 카운트 해주고
+        e = i - 1 # 인덱스 번호 빼줌
+        x = n - cnt
+
+while s < e : # arr[s]~arr[e]까지 돌면서 s가 e보다 작을 때만 실행
+    
+    # arr[s] + arr[e]가 m/2보다 클 때와 같은 뜻인데,
+    # 나눗셈은 부동소수점에 의해 미세한 오차가 발생할 수 있으니
+    # 2 * (arr[s] + arr[e]) >= m으로 표시해 줌
+    # 결국 같은 뜻인데, 오차 위험성이 사라짐
+    if (2 * (arr[s] + arr[e])) >= m :
+        cnt += 1 # 카운트 1추가
+        x -= 2 # 두 개씩 돌 거기 때문에 용량 다 차면 두 개 지워줌
+        s += 1 # 찾으면 s를 뒤로 보내주고
+        e -= 1 # e도 앞으로 보내줌
+        
+    else : # 2 * (arr[s] + arr[e])보다 작은 경우에는
+        s += 1 # e는 고정해두고 s만 옮겨줌
+        # 왜 와이? 양 끝을 돌기 때문에, arr[s] + arr[e]의 값이 커져야 함
+        # 맨 앞에 제일 작은 수가 오니까 그보다 더 큰 수를 더해줘야 함
+
+print(cnt + x // 3)
 
 

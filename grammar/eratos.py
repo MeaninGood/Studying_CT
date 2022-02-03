@@ -1,4 +1,4 @@
-# n = 16
+# n = 10
 
 
 # # [True, True, True, True, True, True, True, True, True, True, True]
