@@ -15,10 +15,10 @@ def check(x):
     total  = 0
     for i in range(n):
         total += max(0, arr[i] - x) # 음수일 때는 0 나오라고 max(0)
-        
+         
     # 같은 코드    
     # if arr[i] > x :
-    #     total += arr[i] - x
+    #     total += arr[i]- x
     
     return total >= m # T F 리턴
 
