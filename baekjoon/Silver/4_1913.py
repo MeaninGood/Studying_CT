@@ -28,10 +28,11 @@
 
 '''
 
-#달팽이
+달팽이
 n = int(input())
 arr = [[0 for i in range(n)] for j in range(n)]
 num = int(input())
+
 
 dx = [0, 1, 0, -1]
 dy = [-1, 0, 1, 0]
@@ -58,3 +59,24 @@ for k in range(n):
     for l in range(n):
         if arr[k][l] == num:
             print(k+1, l+1)
+
+
+n = int(input())
+arr = [([0]*n) for j in range(n)]
+num = int(input())
+
+dx = [0, 1, 0, -1]
+dy = [-1, 0, 1, 0]
+
+x = 0
+y = 0
+dir = 0
+for i in range(1, n * n + 1):
+    arr[x][y] = i
+    
+    nx = x + dx[dir]
+    ny = y + dy[dir]
+    
+    if not (0 <= nx < n and 0 <= ny < n) or arr[nx][ny] != 0 :
+        
+print(arr)
