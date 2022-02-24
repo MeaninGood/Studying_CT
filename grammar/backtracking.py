@@ -12,7 +12,7 @@ def check(cur, s):
         
     return True
 
-def recur(Cur, s):
+def recur(cur, s):
     if not check(cur, s):
         return
     

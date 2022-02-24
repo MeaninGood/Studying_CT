@@ -33,4 +33,4 @@ def dec_to_bin(n):
         # 새로운 n을 다시 함수에 집어 넣고, 나머지를 더해주자
         return dec_to_bin(n) + str(remainder)
 
-dec_to_bin(10)
+print(dec_to_bin(9))

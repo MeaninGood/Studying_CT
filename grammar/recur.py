@@ -16,7 +16,7 @@ recur(0)
 
 
 # if 0 == n :
-print(*arr) 가 된다
+print(*arr) # 가 된다
 
 else :
     for i in range(m) :
