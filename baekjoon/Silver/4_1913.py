@@ -28,27 +28,26 @@
 
 '''
 
-달팽이
 n = int(input())
 arr = [[0 for i in range(n)] for j in range(n)]
 num = int(input())
 
 
-dx = [0, 1, 0, -1]
-dy = [-1, 0, 1, 0]
+dx = [1, 0, -1, 0]
+dy = [0, 1, 0, -1]
 
 x = 0
 y = 0
 dir = 0
 for i in range(1, n * n + 1)[::-1]:
     arr[x][y] = i
-
-    nx = x + dx[dir]
-    ny = y + dy[dir]
-
+        
+    nx = x + dx[dir] # 임시로 가보는 애들
+    ny = y + dy[dir] # 얘네가 봤을 때 갈 수 있으면
+    # 이 조건문에 걸리지 않으면
     if not (0 <= nx < n and 0 <= ny < n) or arr[nx][ny] != 0:
         dir = (dir + 1) % 4
-
+    # 실제 x 와 y값을 바꿔준다
     x += dx[dir]
     y += dy[dir]
 
@@ -59,24 +58,26 @@ for k in range(n):
     for l in range(n):
         if arr[k][l] == num:
             print(k+1, l+1)
-
-
-n = int(input())
-arr = [([0]*n) for j in range(n)]
-num = int(input())
-
-dx = [0, 1, 0, -1]
-dy = [-1, 0, 1, 0]
-
-x = 0
-y = 0
-dir = 0
-for i in range(1, n * n + 1):
-    arr[x][y] = i
-    
-    nx = x + dx[dir]
-    ny = y + dy[dir]
-    
-    if not (0 <= nx < n and 0 <= ny < n) or arr[nx][ny] != 0 :
-        
 print(arr)
+
+# n = int(input())
+# arr = [([0]*n) for j in range(n)]
+# num = int(input())
+
+# dx = [0, 1, 0, -1]
+# dy = [-1, 0, 1, 0]
+
+# x = 0
+# y = 0
+# dir = 0
+# for i in range(1, n * n + 1):
+#     arr[x][y] = i
+    
+#     nx = x + dx[dir]
+#     ny = y + dy[dir]
+    
+#     if not (0 <= nx < n and 0 <= ny < n) or arr[nx][ny] != 0 :
+        
+# print(arr)
+
+
