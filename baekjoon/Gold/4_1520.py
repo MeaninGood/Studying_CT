@@ -1,37 +1,28 @@
-# m, n = map(int, input().split())
-# arr = [list(map(int, input().split())) for i in range(m)]
+# 1520번_내리막길
 
-# dx = [0, 1, 0, -1]
-# dy = [1, 0, -1, 0]
-# cnt = 0
-# def recur(x, y):
-#     global cnt
-#     # visited = [[False for i in range(n)] for j in range(m)]
+## 제일 왼쪽 위 칸에서 제일 오른쪽 아래 칸으로 이동
+## 항상 높이가 더 낮은 지점으로만 이동
+## 경로의 개수를 구하기
 
-#     if x == m - 1 and y == n - 1:
-#         return 1
-    
-#     # visited[x][y] == True
-    
-#     # if arr[x][y] > arr[x+1][y] and not visited[x+1][y]:
-#     #     recur(x+1, y)
-#     # elif arr[x][y] > arr[x][y+1] and not visited[x][y+1]:
-#     #     recur(x, y+1)
-#     # elif arr[x][y] > arr[x][y-1] and not visited[x][y-1]:
-#     #     recur(x, y-1)
-    
-#     if (0 <= x+1 < m) and arr[x][y] > arr[x+1][y]:
-#         recur(x+1, y)
-#     if (0 <= y+1 < n) and arr[x][y] > arr[x][y+1]:
-#         recur(x, y+1)
-#     if (0 <= y+1 < n) and arr[x][y] > arr[x][y-1]:
-#         recur(x, y-1)
-    
-#     return
-    
-# recur(0, 0)
+'''
+# 첫째 줄에는 지도의 세로 M과 가로 N이 빈칸을 사이에 두고 주어짐
+# M개 줄에 걸쳐 한 줄에 N개씩 각 지점의 높이가 빈 칸을 사이에 두고 주어짐
+# M과 N은 각각 500이하의 자연수이고, 각 지점의 높이는 10000이하의 자연수
+## 첫째 줄에 이동 가능한 경로의 수 H를 출력
+## 모든 입력에 대하여 H는 10억 이하의 음이 아닌 정수
 
-# print(cnt)
+
+(입력)
+4 5
+50 45 37 32 30
+35 50 40 20 25
+30 30 25 17 28
+27 24 22 15 10
+
+(출력) 
+3
+
+'''
 
 
 

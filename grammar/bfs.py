@@ -11,7 +11,6 @@
 
 # 1260
 from collections import deque
-import collections
 
 def bfs(s):
     que = deque()
