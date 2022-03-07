@@ -28,6 +28,7 @@
 '''
 
 import sys
+sys.setrecursionlimit(3000)
 
 n, m = map(int, sys.stdin.readline().split())
 arr = [list(sys.stdin.readline().rstrip()) for _ in range(n)]
@@ -36,7 +37,11 @@ arr = [list(sys.stdin.readline().rstrip()) for _ in range(n)]
 dx = [1, 0, -1, 0]
 dy = [0, 1, 0, -1]
 visited = [[False for i in range(m)] for j in range(n)]
+dp = [[-1 for i in range(m)] for j in range(n)]
 def dfs(x, y):
+    if dp[x][y] != -1:
+        return dp[x][y]
+    
     visited[x][y] = True
     
     ret = 1
@@ -53,6 +58,7 @@ def dfs(x, y):
         
         ret = max(ret, dfs(nx, ny) + 1)
     visited[x][y] = False
+    dp[x][y] = ret
     return ret
 
 print(dfs(0, 0))
