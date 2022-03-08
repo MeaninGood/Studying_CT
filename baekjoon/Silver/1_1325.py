@@ -1,14 +1,19 @@
 import sys
 sys.setrecursionlimit(100000)
 
+li = []
+
 def dfs(cur):
+    ret = 1
     visited[cur] = True
+    li.append(cur)
     
     for nxt in arr[cur]:
         if visited[nxt]:
             continue
         
-        dfs(nxt)
+        ret += dfs(nxt)
+    return ret
 
 
 n, m = map(int, sys.stdin.readline().split())
@@ -19,19 +24,22 @@ for i in range(m):
     
     arr[b].append(a)
     
+visited = [False for i in range(n + 1)]
 ans = []
 mx = 0
 for i in range(n+1):
-    visited = [False for _ in range(n+1)]
-    dfs(i)
-    ans.append(visited.count(True))
-    mx = max(mx, ans[i-1])
+    a = dfs(i)
+    ans.append(a)
+    mx = max(mx, a)
+    
+    for i in li:
+        visited[i] = False
+    li.clear()
+        
 
-print(ans)
 for i in range(n+1):
     if ans[i] == mx:
         print(i, end = ' ')
-
 
 
 

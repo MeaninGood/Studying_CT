@@ -27,13 +27,13 @@ def bfs(s):
         print(cur) # 출력을 여기서 해줌
         
         # dfs는 방문처리 visited[i] = True를 여기서 했음
-        # bfs는 방문처리를 여기서 해줌
+        # bfs는 방문처리를 for문 안에서 해줌
         for nxt in v[cur]:
-            if visited[nxt]: # 얘는 여기서 함
+            if visited[nxt]:
                 continue
             
             que.append(nxt)
-            visited[nxt] = True
+            visited[nxt] = True  # 얘는 여기서 함
             
 
 def dfs(cur):
