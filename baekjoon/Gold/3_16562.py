@@ -26,7 +26,7 @@
 '''
 
 import sys
-
+sys.setrecursionlimit(100000)
 
 def dfs(cur):
     ret = arr[cur]
