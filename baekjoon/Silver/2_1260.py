@@ -28,33 +28,61 @@
 
 '''
 
+import sys
 from collections import deque
+sys.setrecursionlimit(100000)
+
+def dfs(cur):
+    visited[cur] = True
+    
+    print(cur, end =' ')
+        
+    for nxt in arr[cur]:
+        if visited[nxt]:
+            continue
+        
+        dfs(nxt)
+        
+        
+def bfs(s):
+    que = deque()
+    li = [False for i in range(n+1)]
+    
+    que.append(s)
+    li[s] = True
+
+    while len(que) > 0:
+        size = len(que)
+        
+        for _ in range(size):
+            cur = que[0]
+            que.popleft()
+            print(cur, end = ' ')
+            
+            for nxt in arr[cur]:
+                if li[nxt]:
+                    continue
+                
+                que.append(nxt)
+                li[nxt] = True
+        
+        
 n, m, v = map(int, input().split())
+
 arr = [[] for i in range(n+1)]
 for i in range(m):
     a, b = map(int, input().split())
     
     arr[a].append(b)
     arr[b].append(a)
-    
-visited = [False for i in range(n+1)]
 
-def dfs(cur):
-    visited[cur] = True
+for i in arr:
+    i.sort()
     
-    for nxt in arr[cur]:
-        if visited[nxt]:
-            continue
+
+visited = [False for _ in range(n+1)]
+
+dfs(v)
+print()
+bfs(v)
         
-        dfs(cur)
-        
-        
-def bfs(v):
-    que = deque()
-    li = [False for i in range(n+1)]
-    
-    que.append(v)
-    li[v] = True
-    while len(que) > 0:
-        
-    
