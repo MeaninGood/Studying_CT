@@ -29,41 +29,43 @@
 
 '''
 
-import sys
-sys.setrecursionlimit(100000)
+## dfs로 메모리 초과 뜨는 문제
 
-dx = [1, 0, -1, 0]
-dy = [0, 1, 0, -1]
+# import sys
+# sys.setrecursionlimit(100000)
 
-def dfs(x, y):
-    ret = 1
-    visited[x][y] = True
+# dx = [1, 0, -1, 0]
+# dy = [0, 1, 0, -1]
+
+# def dfs(x, y):
+#     ret = 1
+#     visited[x][y] = True
     
-    for i in range(4):
-        nx = x + dx[i]
-        ny = y + dy[i]
+#     for i in range(4):
+#         nx = x + dx[i]
+#         ny = y + dy[i]
         
-        if not (0 <= nx < n and 0 <= ny < m) or arr[nx][ny] == 0 or visited[nx][ny]:
-            continue
+#         if not (0 <= nx < n and 0 <= ny < m) or arr[nx][ny] == 0 or visited[nx][ny]:
+#             continue
         
-        ret += dfs(nx, ny)
-    return ret
-n, m = map(int, sys.stdin.readline().split())
-arr = [list(map(int, sys.stdin.readline().split())) for _ in range(n)]
-visited = [[False]*m for _ in range(n)]
+#         ret += dfs(nx, ny)
+#     return ret
+# n, m = map(int, sys.stdin.readline().split())
+# arr = [list(map(int, sys.stdin.readline().split())) for _ in range(n)]
+# visited = [[False]*m for _ in range(n)]
 
-cnt = 0
-ans = 0
-for i in range(n):
-    for j in range(m):
-        if arr[i][j] == 1 and not visited[i][j]:
-            cnt += 1
-            ans = max(ans, dfs(i, j))
+# cnt = 0
+# ans = 0
+# for i in range(n):
+#     for j in range(m):
+#         if arr[i][j] == 1 and not visited[i][j]:
+#             cnt += 1
+#             ans = max(ans, dfs(i, j))
             
-if cnt == 0:
-    print(cnt, 0, sep='\n')
-else:
-    print(cnt, ans, sep='\n')
+# if cnt == 0:
+#     print(cnt, 0, sep='\n')
+# else:
+#     print(cnt, ans, sep='\n')
     
 '''
 6 5
@@ -75,3 +77,51 @@ else:
 1 1 1 0 0
 
 '''
+
+
+## bfs
+
+from collections import deque
+
+n, m = map(int, input().split())
+arr = [list(map(int, input().split())) for _ in range(n)]
+
+dx = [0, 1, 0, -1]
+dy = [1, 0, -1, 0]
+def bfs(x, y):
+    que = deque()
+    cnt = 0
+    
+    que.append([x, y])
+    visited[x][y] = True
+    
+    while len(que) > 0:
+        size = len(que)
+        
+        for _ in range(size):
+            x = que[0][0]
+            y = que[0][1]
+            que.popleft()
+            cnt += 1
+        
+            for d in range(4):
+                nx = x + dx[d]
+                ny = y + dy[d]
+                
+                if not (0 <= nx < n and 0 <= ny < m) or arr[nx][ny] != 1 or visited[nx][ny]:
+                    continue
+                
+                que.append([nx, ny])
+                visited[nx][ny] = True
+    return cnt             
+
+visited = [[False for i in range(m)] for j in range(n)]
+ans = 0
+mx = 0
+for i in range(n):
+    for j in range(m):
+        if arr[i][j] == 1 and not visited[i][j]:
+            ans += 1
+            mx = max(mx, bfs(i, j))
+        
+print(ans, mx, sep='\n')
