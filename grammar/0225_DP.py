@@ -3,50 +3,119 @@
 # n = int(input())
 # arr = [list(map(int, input().split())) for i in range(n)]
 # dp = [-1 for i in range(1500010)]
-#
+
 # ans = 0
-#
+
 # def recur(cur, total):
 #     global ans
-#
+
 #     if cur > n:
 #         return
-#
+
 #     if cur == n:
 #         ans = max(ans, total)
 #         return
-#
+
 #     recur(cur + arr[cur][0], total + arr[cur][1])
 #     recur(cur + 1, total)
-#
+
 # def recur(cur):
 #     if cur > n:
 #         return -1000000000
-#
+
 #     if cur == n:
 #         return 0
-#
+
 #     return max(recur(cur + arr[cur][0]) + arr[cur][1], recur(cur + 1))
-#
+
 # def recur(cur):
 #     if cur > n:
 #         return -1000000000
-#
+
 #     if cur == n:
 #         return 0
-#
+
 #     if dp[cur] != -1:
 #         return dp[cur]
-#
+
 #     dp[cur] = max(recur(cur + arr[cur][0]) + arr[cur][1], recur(cur + 1))
-#
+
 #     return dp[cur]
-#
-#
+
+
+# print(recur(0))
+
+'''
+n = int(input())
+arr = [list(map(int, input().split())) for i in range(n)]
+ans = 0
+total = 0
+
+def recur(cur, total):
+    global ans
+    
+    if cur > n:
+        return
+    
+    if cur == n:
+        ans = max(ans, total)
+        return ans
+    
+    recur(cur + arr[cur][0], total + arr[cur][1])
+    recur(cur + 1, total)
+
+print(recur(0, 0))
+
+'''
+
+# import sys
+# n = int(sys.stdin.readline())
+# arr = [list(map(int, sys.stdin.readline().split())) for _ in range(n)]
+# dp = [-1 for _ in range(1500010)]
+
+# def recur(cur):
+#     if cur > n:
+#         return -10000000000
+    
+#     if cur == n:
+#         return 0
+    
+#     if dp[cur] != -1 :
+#         return dp[cur]
+    
+#     dp[cur] = max(recur(cur + arr[cur][0]) + arr[cur][1], recur(cur + 1))
+    
+#     return dp[cur]
+
 # print(recur(0))
 
 
+# import sys
+# sys.setrecursionlimit(300010)
 
+# n = int(sys.stdin.readline())
+# arr = [list(map(int, sys.stdin.readline().split())) for _ in range(n)]
+# dp = [-1 for i in range(1500010)]
+
+# def recur(cur):
+#     if cur > n:
+#         return -10000000000
+    
+#     if cur == n:
+#         return 0
+    
+#     if dp[cur] != -1 :
+#         return dp[cur]
+    
+#     dp[cur] = max(recur(cur + arr[cur][0]) + arr[cur][1], recur(cur + 1))
+    
+#     return dp[cur]
+
+
+# print(recur(0))
+    
+    
+    
 
 
 
@@ -54,14 +123,14 @@
 
 # def recur(total):
 #     global cnt
-#
+
 #     if total > n:
 #         return
-#
+
 #     if total == n:
 #         cnt += 1
 #         return
-#
+
 #     for i in range(1, 4):
 #         recur(total + i)
 
@@ -86,16 +155,53 @@
 #     dp[total] = ret
 #
 #     return dp[total]
-#
-#
-# t = int(input())
-#
-# for _ in range(t):
-#     n = int(input())
-#
-#     print(recur(n))
 
 
+
+
+
+# def recur(total):
+#     global cnt
+#     if total > n:
+#         return
+    
+#     if total == n:
+#         cnt += 1
+#         return
+    
+#     for i in range(1, 4):
+#         recur(total + i)
+
+
+
+dp = [-1 for i in range(100010)]
+def recur(total):
+    ret = 0
+    
+    if total < 0:
+        return 0
+    
+    if total == 0:
+        return 1
+    
+    if dp[total] != -1 :
+        return dp[total] 
+    
+    for i in range(1, 4):
+        ret += recur(total - i)
+        
+    dp[total] = ret
+     
+    return dp[total]
+
+t = int(input())
+
+for _ in range(t):
+    print(recur(int(input())))
+    
+
+
+    
 
 
 
@@ -256,31 +362,31 @@
 # print(recur(-1, 0))
 
 
-from pprint import pprint
+# from pprint import pprint
 
-n = int(input())
-arr = list(map(int, input().split())) + [-1]
+# n = int(input())
+# arr = list(map(int, input().split())) + [-1]
 
-dp = [[-1 for i in range(7)] for j in range(7)]
+# dp = [[-1 for i in range(7)] for j in range(7)]
 
-def recur(cur, prv):
-    if cur == n:
-        return 0
+# def recur(cur, prv):
+#     if cur == n:
+#         return 0
 
-    if dp[cur][prv] != -1:
-        return dp[cur][prv]
+#     if dp[cur][prv] != -1:
+#         return dp[cur][prv]
 
-    if arr[cur] > arr[prv]:
-        ret = max(recur(cur + 1, cur) + 1, recur(cur + 1, prv))
-    else:
-        ret = recur(cur + 1, prv)
+#     if arr[cur] > arr[prv]:
+#         ret = max(recur(cur + 1, cur) + 1, recur(cur + 1, prv))
+#     else:
+#         ret = recur(cur + 1, prv)
 
-    dp[cur][prv] = ret
+#     dp[cur][prv] = ret
 
-    return dp[cur][prv]
+#     return dp[cur][prv]
 
-print(recur(0, n))
-pprint(dp)
+# print(recur(0, n))
+# pprint(dp)
 
 '''
 n = 6
