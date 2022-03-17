@@ -22,7 +22,9 @@ in_order(3) : 6, 7 (n * 2 + 1)
 
 in_order(4) : 8 x (n * 2)
 in_orer(5) : x x (n * 2 + 1)
-
+ 
+in_order(8)
+in_order(16)
 '''
 
 
