@@ -125,19 +125,56 @@
     
 
 # 딕셔너리로 해주기  
-n, m = map(int, input().split())
-arr = [0] + list(map(int, input().split()))
-prefix = [0 for i in range(n + 1)]
+# n, m = map(int, input().split())
+# arr = [0] + list(map(int, input().split()))
+# prefix = [0 for i in range(n + 1)]
+# cnt = {}
+
+# for i in range(1, n + 1):
+#     prefix[i] = prefix[i - 1] + arr[i]
+    
+# ans = 0
+# for i in range(n + 1):
+#     ans += cnt.get(prefix[i] - m, 0) # 저런 키를 넣은 적이 없으면 0이 리턴됨
+    
+#     cnt[prefix[i]] = cnt.get(prefix[i], 0) + 1 # prefix[i]가 있으면 얘 + 1
+#                                        # 없으면 0 + 1
+# print(cnt)
+# print(ans)
+
+
+# n = int(input())
+# arr = [0] + [input() for _ in range(n)]
+# prefix = [0 for _ in range(n + 1)]
+# idx = ['P', 'H', 'S']
+
+# mx = 0
+# for i in range(1, n + 1):
+#     cnt[arr[i]] = cnt.get(arr[i], 0) + 1
+    
+# mx = max(cnt[arr[i]])
+
+# print(mx)
+
+
+    
+    # ans += cnt[prefix[i] - m]
+
+# for i in range(1, n + 1):
+#     prefix[i] = prefix[i - 1] + arr[i]
+    
+#     cnt[prefix[i]] += 1
+
+
+
+n = int(input())
+arr = [0] + [input() for _ in range(n)]
+prefix = [0 for _ in range(n + 1)]
 cnt = {}
 
+
 for i in range(1, n + 1):
-    prefix[i] = prefix[i - 1] + arr[i]
+    cnt[arr[i]] = cnt.get(arr[i], 0) + 1
+    prefix[i] = cnt[arr[i]]
     
-ans = 0
-for i in range(n + 1):
-    ans += cnt.get(prefix[i] - m, 0) # 저런 키를 넣은 적이 없으면 0이 리턴됨
-    
-    cnt[prefix[i]] = cnt.get(prefix[i], 0) + 1 # prefix[i]가 있으면 얘 + 1
-                                       # 없으면 0 + 1
-print(cnt)
-print(ans)
+print(prefix)
