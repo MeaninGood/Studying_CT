@@ -29,43 +29,111 @@
 '''
 
 
-import sys
-sys.setrecursionlimit(100000)
-dx = [0, 1, 0, -1]
-dy = [1, 0, -1, 0]
-def dfs(x, y):
+# import sys
+# sys.setrecursionlimit(100000)
+# dx = [0, 1, 0, -1]
+# dy = [1, 0, -1, 0]
+# def dfs(x, y):
+#     ret = 1
+#     visited[x][y] = True
+    
+#     for i in range(4):
+#         nx = x + dx[i]
+#         ny = y + dy[i]
+        
+#         if not (0 <= nx < m and 0 <= ny < n) or arr[nx][ny] !=0 or visited[nx][ny]:
+#             continue
+        
+#         ret += dfs(nx, ny)
+#     return ret
+
+# m, n, k = map(int, input().split())
+# arr = [[0]*n for _ in range(m)]
+
+# for _ in range(k):
+#     y1, x1, y2, x2 = map(int, input().split())
+    
+#     for i in range(x1, x2):
+#         for j in range(y1, y2):
+#             arr[i][j] = 1
+            
+# visited = [[False]*n for _ in range(m)]
+# cnt = 0
+# li = []
+# for i in range(m):
+#     for j in range(n):
+#         if arr[i][j] == 0 and not visited[i][j]:
+#             cnt += 1
+#             li.append(dfs(i, j))
+
+# li.sort()
+# print(cnt)
+# print(*li)
+
+
+
+
+### bfs로 다시 풀기!
+
+from collections import deque
+
+
+
+dx = [1, 0, -1, 0]
+dy = [0, 1, 0, -1]
+
+def in_range(x, y):
+    return 0 <= x < n and 0 <= y < m
+
+def bfs(x, y):
+    que = deque()
     ret = 1
+    
+    que.append([x, y])
     visited[x][y] = True
     
-    for i in range(4):
-        nx = x + dx[i]
-        ny = y + dy[i]
+    while len(que) > 0:
+        size = len(que)
         
-        if not (0 <= nx < m and 0 <= ny < n) or arr[nx][ny] !=0 or visited[nx][ny]:
-            continue
+        for _ in range(size):
+            x, y = que[0][0], que[0][1]
+            que.popleft()
+            
+            for d in range(4):
+                nx = x + dx[d]
+                ny = y + dy[d]
+                
+                if not in_range(nx, ny) or visited[nx][ny] or v[nx][ny] != 0:
+                    continue
+                
+                que.append([nx, ny])
+                visited[nx][ny] = True
+                
+                ret += 1
         
-        ret += dfs(nx, ny)
-    return ret
-
-m, n, k = map(int, input().split())
-arr = [[0]*n for _ in range(m)]
+    return ret                  
+    
+    
+n, m, k = map(int, input().split())
+v = [[0 for i in range(m)] for _ in range(n)]
 
 for _ in range(k):
     y1, x1, y2, x2 = map(int, input().split())
     
     for i in range(x1, x2):
         for j in range(y1, y2):
-            arr[i][j] = 1
+            v[i][j] = 1
             
-visited = [[False]*n for _ in range(m)]
-cnt = 0
-li = []
-for i in range(m):
-    for j in range(n):
-        if arr[i][j] == 0 and not visited[i][j]:
-            cnt += 1
-            li.append(dfs(i, j))
+visited = [[False for i in range(m)] for j in range(n)]
 
-li.sort()
+cnt = 0
+ans = []
+for i in range(n):
+    for j in range(m):
+        if v[i][j] == 0 and not visited[i][j]:
+            cnt += 1
+            ans.append(bfs(i, j))
+          
+ans.sort()       
 print(cnt)
-print(*li)
+print(*ans)
