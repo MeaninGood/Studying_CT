@@ -84,7 +84,7 @@
 
 
 
-# 다시 풀기!
+# bfs로 다시 풀기!
 
 from collections import deque
 dx = [0, 1, 0, -1]
