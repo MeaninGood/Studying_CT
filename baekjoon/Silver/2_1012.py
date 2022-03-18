@@ -40,42 +40,103 @@
 
 '''
 
-import sys
-sys.setrecursionlimit(100000)
+# import sys
+# sys.setrecursionlimit(100000)
 
+# dx = [0, 1, 0, -1]
+# dy = [1, 0, -1, 0]
+# def dfs(x, y):
+#     visited[x][y] = True
+    
+#     for i in range(4):
+#         nx = x + dx[i]
+#         ny = y + dy[i]
+        
+#         if not (0 <= nx < n and 0 <= ny < m) or visited[nx][ny] or arr[nx][ny] != 1:
+#             continue
+        
+#         dfs(nx, ny)
+
+
+# T = int(sys.stdin.readline())
+# for tc in range(T):
+#     n, m, k = map(int, sys.stdin.readline().split())
+#     arr = [[0]*m for _ in range(n)]
+
+#     for i in range(k):
+#         x, y = map(int, sys.stdin.readline().split())
+#         arr[x][y] = 1
+        
+
+#     visited = [[False]*m for _ in range(n)]
+#     cnt = 0
+#     for i in range(n):
+#         for j in range(m):
+#             if arr[i][j] == 1 and not visited[i][j]:
+#                 cnt += 1
+#                 dfs(i, j)
+
+#     print(cnt)
+
+# love you
+
+
+
+
+
+# 다시 풀기!
+
+from collections import deque
 dx = [0, 1, 0, -1]
 dy = [1, 0, -1, 0]
-def dfs(x, y):
+
+
+def in_range(x, y):
+    return 0 <= x < n and 0 <= y < m
+
+def bfs(x, y):
+    que = deque()
+    
+    que.append([x, y])
     visited[x][y] = True
     
-    for i in range(4):
-        nx = x + dx[i]
-        ny = y + dy[i]
+    while len(que) > 0:
+        size = len(que)
         
-        if not (0 <= nx < n and 0 <= ny < m) or visited[nx][ny] or arr[nx][ny] != 1:
-            continue
-        
-        dfs(nx, ny)
+        for _ in range(size):
+            x, y = que[0][0], que[0][1]
+            que.popleft()
+            
+            for d in range(4):
+                nx = x + dx[d]
+                ny = y + dy[d]
+                
+                if not in_range(nx, ny) or visited[nx][ny] or v[nx][ny] != 1:
+                    continue
+                
+                que.append([nx, ny])
+                visited[nx][ny] = True
+            
+    
+T = int(input())
 
-
-T = int(sys.stdin.readline())
 for tc in range(T):
-    n, m, k = map(int, sys.stdin.readline().split())
-    arr = [[0]*m for _ in range(n)]
+    m, n, k = map(int, input().split())
+    v = [[0 for i in range(m)] for j in range(n)]
+    
+    for _ in range(k):
+        x, y = map(int, input().split())
+        v[y][x] = 1
 
-    for i in range(k):
-        x, y = map(int, sys.stdin.readline().split())
-        arr[x][y] = 1
-        
-
-    visited = [[False]*m for _ in range(n)]
+    visited = [[False for i in range(m)] for j in range(n)]
+    
     cnt = 0
     for i in range(n):
         for j in range(m):
-            if arr[i][j] == 1 and not visited[i][j]:
+            if v[i][j] == 1 and not visited[i][j]:
+                bfs(i, j)
                 cnt += 1
-                dfs(i, j)
-
+                
     print(cnt)
-
-# love you
+    
+    

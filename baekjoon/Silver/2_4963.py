@@ -48,37 +48,97 @@
 
 '''
 
-import sys
+# import sys
 
-dx = [-1, -1, -1, 0, 0, 1, 1, 1]
-dy = [-1, 0, 1, -1, 1, -1, 0, 1]
-def dfs(x, y):
+# dx = [-1, -1, -1, 0, 0, 1, 1, 1]
+# dy = [-1, 0, 1, -1, 1, -1, 0, 1]
+# def dfs(x, y):
+#     visited[x][y] = True
+    
+#     for i in range(8):
+#         nx = x + dx[i]
+#         ny = y + dy[i]
+        
+#         if not (0 <= nx < m and 0 <= ny < n) or visited[nx][ny] or arr[nx][ny] != 1:
+#             continue
+        
+#         dfs(nx, ny)
+    
+
+# while True:
+#     n, m = map(int, sys.stdin.readline().split())
+#     arr = [list(map(int, sys.stdin.readline().split())) for _ in range(m)]
+
+#     if n == 0 and m == 0:
+#         break
+    
+#     visited = [[False]*n for _ in range(m)]
+    
+#     cnt = 0
+#     for i in range(m):
+#         for j in range(n):
+#             if arr[i][j] == 1 and not visited[i][j]:
+#                 cnt += 1
+#                 dfs(i, j)
+
+#     print(cnt)
+
+
+
+# bfs로 다시 풀기!
+
+
+from collections import deque
+
+
+dx = [1, 0, -1, 0, -1, -1, 1, 1]
+dy = [0, 1, 0, -1, -1, 1, -1, 1]
+
+def in_range(x, y):
+    return 0 <= x < n and 0 <= y < m
+
+def bfs(x, y):
+    que = deque()
+    
+    que.append([x, y])
     visited[x][y] = True
     
-    for i in range(8):
-        nx = x + dx[i]
-        ny = y + dy[i]
+    while len(que) > 0:
+        size = len(que)
         
-        if not (0 <= nx < m and 0 <= ny < n) or visited[nx][ny] or arr[nx][ny] != 1:
-            continue
-        
-        dfs(nx, ny)
+        for _ in range(size):
+            x, y = que[0][0], que[0][1]
+            que.popleft()
+            
+            for d in range(8):
+                nx = x + dx[d]
+                ny = y + dy[d]
+                
+                if not in_range(nx, ny) or visited[nx][ny] or v[nx][ny] != 1:
+                    continue
+                
+                que.append([nx, ny])
+                visited[nx][ny] = True
+                
+                
     
-
-while True:
-    n, m = map(int, sys.stdin.readline().split())
-    arr = [list(map(int, sys.stdin.readline().split())) for _ in range(m)]
-
+while 1:
+    m, n = map(int, input().split())
+    
     if n == 0 and m == 0:
         break
     
-    visited = [[False]*n for _ in range(m)]
+    v = [list(map(int, input().split())) for _ in range(n)]
+    
+    visited = [[False for i in range(m)] for j in range(n)]
     
     cnt = 0
-    for i in range(m):
-        for j in range(n):
-            if arr[i][j] == 1 and not visited[i][j]:
+    for i in range(n):
+        for j in range(m):
+            if v[i][j] == 1 and not visited[i][j]:
                 cnt += 1
-                dfs(i, j)
-
-    print(cnt)                
+                bfs(i, j)
+                
+    print(cnt)
+    
+    
