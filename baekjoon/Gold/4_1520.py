@@ -26,32 +26,76 @@
 
 
 
-m, n = map(int, input().split())
-arr = [list(map(int, input().split())) for i in range(m)]
+# m, n = map(int, input().split())
+# arr = [list(map(int, input().split())) for i in range(m)]
+
+# dx = [0, 1, 0, -1]
+# dy = [1, 0, -1, 0]
+# dp = [[-1 for i in range(n)] for j in range(m)]
+    
+# def recur(x, y):
+#     ret = 0
+   
+#     if x == m - 1 and y == n - 1:
+#         return 1
+    
+#     if dp[x][y] != -1:
+#         return dp[x][y]
+
+#     for i in range(4):
+#         nx = x + dx[i]
+#         ny = y + dy[i]
+        
+#         if not (0 <= nx < m and 0 <= ny < n) or arr[nx][ny] >= arr[x][y]:
+#             continue
+        
+#         ret += recur(nx, ny)
+    
+#     dp[x][y] = ret
+    
+#     return ret
+# print(recur(0, 0))
+
+
+
+
+
+
+
+
+
+
+
 
 dx = [0, 1, 0, -1]
 dy = [1, 0, -1, 0]
-dp = [[-1 for i in range(n)] for j in range(m)]
-    
-def recur(x, y):
+
+def in_range(x, y):
+    return 0 <= x < n and 0 <= y < m
+
+def dfs(x, y):
     ret = 0
-   
-    if x == m - 1 and y == n - 1:
+    
+    if x == n - 1 and y == m - 1:
         return 1
     
     if dp[x][y] != -1:
         return dp[x][y]
-
-    for i in range(4):
-        nx = x + dx[i]
-        ny = y + dy[i]
+    
+    for d in range(4):
+        nx = x + dx[d]
+        ny = y + dy[d]
         
-        if not (0 <= nx < m and 0 <= ny < n) or arr[nx][ny] >= arr[x][y]:
+        if not in_range(nx, ny) or v[nx][ny] >= v[x][y]:
             continue
         
-        ret += recur(nx, ny)
-    
+        ret += dfs(nx, ny)
+        
     dp[x][y] = ret
-    
     return ret
-print(recur(0, 0))
+
+n, m = map(int, input().split())
+v = [list(map(int, input().split())) for _ in range(n)]
+dp = [[-1 for i in range(m)] for j in range(n)]
+
+print(dfs(0, 0))

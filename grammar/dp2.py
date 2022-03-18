@@ -140,7 +140,7 @@ arr = [input() for i in range(2)]
 dp = [[[-1 for i in range(110)] for j in range(3)] for k in range(30)]
 
 def recur(cur, x, y):
-    ret = 0
+    ret = 0 
     
     if cur == len(s):
         return 1
