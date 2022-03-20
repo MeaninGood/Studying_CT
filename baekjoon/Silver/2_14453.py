@@ -27,20 +27,29 @@ prefix = [0 for _ in range(n + 1)]
 
 cnt = {}
 
-idxh = -1
-idxs = -1
-idxp = -1
 for i in range(1, n + 1):
     cnt[arr[i]] = cnt.get(arr[i], 0) + 1
     prefix[i] = cnt[arr[i]]
 
+idxp = -1
 idxh = -1
 idxs = -1
-idxp = -1
-for i in range(1, n + 1):
-    if arr[i] == 'H'
+for i in range(n + 1):
+    if arr[i] == 'P' and prefix[cnt['P']]:
+        idxp = i
+    if arr[i] == 'H' and prefix[cnt['H']]:
+        idxh = i
+    if arr[i] == 'S' and prefix[cnt['S']]:
+        idxs = i
+    # if arr[i + 1] == 'H' and prefix[i] < prefix[i + 1]:
+    #     idxh = i + 1ss
+    # if arr[i] == 'S' and prefix[i] < prefix[i + 1]:
+    #     idxs = i + 1
+        
 print(prefix)
-
+print(idxp)
+print(idxh)
+print(idxs)
 '''
  
 P P H P S P P H H H H H H S S
