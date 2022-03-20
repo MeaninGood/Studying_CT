@@ -94,6 +94,7 @@ def bfs(x, y, dir):
             
                 if cnt > 3:
                     cnt = 0
+                    
                     continue
     
     return ret
