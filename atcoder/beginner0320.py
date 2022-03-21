@@ -61,23 +61,23 @@ y ^
 
 # E
 
-import sys
-sys.setrecursionlimit(200000)
-n, m, k, s, t, x = map(int, input().split())
+# import sys
+# sys.setrecursionlimit(200000)
+# n, m, k, s, t, x = map(int, input().split())
 
-arr = [[] for i in range(n + 1)]
-for i in range(m):
-    u, v = map(int, input().split())
-    arr[u].append(v)
-    arr[v].append(u)
+# arr = [[] for i in range(n + 1)]
+# for i in range(m):
+#     u, v = map(int, input().split())
+#     arr[u].append(v)
+#     arr[v].append(u)
     
-def dfs(cur):
-    ret = 0
-    if cur == t:
-        return ret
+# def dfs(cur):
+#     ret = 0
+#     if cur == t:
+#         return ret
     
-    for i in range(k):
-        for nxt in arr[cur]:
-            ret += dfs(nxt)
+#     for i in range(k):
+#         for nxt in arr[cur]:
+#             ret += dfs(nxt)
 
-print(dfs(s))
+# print(dfs(s))
