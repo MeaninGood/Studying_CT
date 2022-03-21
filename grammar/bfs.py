@@ -237,6 +237,7 @@ que = deque()
 d = 0
 que.append(s)
 visited[s] = True
+
 while len(s) > 0:
     size = len(que)
     
@@ -322,6 +323,7 @@ def bfs(x, y):
 
     que.append([x, y])
     visited[x][y] = True
+    
     while len(que) > 0:
         x = que[0][0]
         y = que[0][1]
