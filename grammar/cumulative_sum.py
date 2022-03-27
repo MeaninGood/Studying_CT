@@ -65,7 +65,7 @@
 # # 11660 구간 합 구하기 5
 
 # n, m = map(int, input().split())
-# arr = [[0 for i in range(n + 1)] + [0] + list(map(int, input().split())) for i in range(n)]
+# arr = [[0 for _ in range(n + 1)]] + [[0] + list(map(int, si().split())) for _ in range(n)]
 # prefix = [[0 for i in range(n + 1)] for j in range(n + 1)]
 
 # for i in range(1, n + 1):

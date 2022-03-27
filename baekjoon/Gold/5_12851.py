@@ -29,7 +29,7 @@ def bfs(s):
                 que.append(nxt)
                 
         cnt += 1
-    visited[cur] = False
+    # visited[cur] = False
     return cnt, ret
 
 n, k = map(int, si().split())
