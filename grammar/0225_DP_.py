@@ -149,17 +149,17 @@
 # 1, 2, 3 더하기 바텀업 코드
 
 # dp = [0 for i in range(1000010)]
-#
+
 # dp[1] = 1
 # dp[2] = 2
 # dp[3] = 4
 # for i in range(4, 1000010):
 #     dp[i] = (dp[i - 1] + dp[i - 2] + dp[i - 3]) % 1000000009
-#
+
 # t = int(input())
 # for _ in range(t):
 #     n = int(input())
-#
+
 #     print(dp[n])
 
 
@@ -189,21 +189,24 @@
 #
 # print(dp[n])
 
+
+
+
 # n = int(input())
 #
 # dp = [False for i in range(1010)]
-#
+
 # dp[1] = True
 # dp[2] = False
 # dp[3] = True
 # dp[4] = True
-#
+
 # for i in range(5, n + 1):
 #     if not (dp[i - 1] and dp[i - 3] and dp[i - 4]):
 #         dp[i] = True
 #     else:
 #         dp[i] = False
-#
+
 # if dp[n]:
 #     print('SK')
 # else:
