@@ -396,24 +396,24 @@
 # n = int(input())
 # v = [[] for i in range(n + 1)]
 # par = [0 for i in range(n + 1)]
-#
+
 # for i in range(n - 1):
 #     a, b = map(int, input().split())
-#
+
 #     v[a].append(b)
 #     v[b].append(a)
-#
+
 # def dfs(cur, prv):
 #     par[cur] = prv
-#
+
 #     for nxt in v[cur]:
 #         if nxt == prv:
 #             continue
-#
+
 #         dfs(nxt, cur)
-#
+
 # dfs(1, -1)
-#
+
 # for i in range(2, n + 1):
 #     print(par[i])
 
@@ -421,64 +421,64 @@
 
 # n, r, q = map(int, input().split())
 # v = [[] for i in range(n + 1)]
-#
+
 # for i in range(n - 1):
 #     a, b = map(int, input().split())
-#
+
 #     v[a].append(b)
 #     v[b].append(a)
-#
+
 # sz = [0 for i in range(n + 1)]
-#
+
 # def dfs(cur, prv):
 #     sz[cur] = 1
-#
+
 #     for nxt in v[cur]:
 #         if nxt == prv:
 #             continue
-#
+
 #         sz[cur] += dfs(nxt, cur)
-#
+
 #     return sz[cur]
-#
+
 # dfs(r, -1)
-#
+
 # for i in range(q):
 #     x = int(input())
-#
+
 #     print(sz[x])
 
 
 
 # t = int(input())
-#
+
 # for _ in range(t):
 #     n = int(input())
 #     par = [0 for i in range(n + 1)]
-#
+
 #     for i in range(n - 1):
 #         a, b = map(int, input().split())
-#
+
 #         par[b] = a
-#
+
 #     x, y = map(int, input().split())
-#
+
 #     a = []
 #     while x != 0:
 #         a.append(x)
 #         x = par[x]
-#
+
 #     b = []
 #     while y != 0:
 #         b.append(y)
 #         y = par[y]
-#
+
 #     idx1 = len(a) - 1
 #     idx2 = len(b) - 1
 #     while idx1 >= 0 and idx2 >= 0 and a[idx1] == b[idx2]:
 #         idx1 -= 1
 #         idx2 -= 1
-#
+
 #     print(a[idx1 + 1])
 
 
@@ -561,25 +561,89 @@
 # par = [0 for i in range(n + 1)]
 # depth = [0 for i in range(n + 1)]
 # sz = [0 for i in range(n + 1)]
-#
+
 # for i in range(n - 1):
 #     a, b = map(int, input().split())
-#
+
 #     v[a].append(b)
 #     v[b].append(a)
-#
-#
+
+
 # def dfs(cur, prv):
 #     sz[cur] = 1
-#
+
 #     for nxt in v[cur]:
 #         if nxt == prv:
 #             continue
-#
+
 #         depth[nxt] = depth[cur] + 1
 #         par[nxt] = cur
-#
+
 #         dfs(nxt, cur)
-#
+
 #         sz[cur] += sz[nxt]
 
+
+from collections import deque
+
+n, m = map(int, input().split())
+arr = [list(map(int, input().split())) for i in range(n)]
+x, y, dir = map(int, input().split())
+ex, ey, edir = map(int, input().split())
+
+dx = [1, 0, -1, 0]
+dy = [0, 1, 0, -1]
+change_dir = [0, 1, 3, 0, 2]
+
+x -= 1
+y -= 1
+dir = change_dir[dir]
+
+ex -= 1
+ey -= 1
+edir = change_dir[edir]
+
+def in_range(x, y):
+    return 0 <= x < n and 0 <= y < m
+
+que = deque()
+visited = [[[False for i in range(5)] for j in range(m)] for i in range(n)]
+
+d = 0
+que.append([x, y, dir])
+visited[x][y][dir] = True
+while len(que) > 0:
+    size = len(que)
+    for _ in range(size):
+        x, y, dir = que[0][0], que[0][1], que[0][2]
+        que.popleft()
+
+        if x == ex and y == ey and dir == edir:
+            print(d)
+            exit()
+
+        for i in range(1, 4):
+            nx = x + i * dx[dir]
+            ny = y + i * dy[dir]
+
+            if not in_range(nx, ny) or arr[nx][ny] == 1:
+                break
+
+            if visited[nx][ny][dir]:
+                continue
+
+            que.append([nx, ny, dir])
+            visited[nx][ny][dir] = True
+
+
+        ndir = (dir + 1) % 4
+        if not visited[x][y][ndir]:
+            que.append([x, y, ndir])
+            visited[x][y][ndir] = True
+
+        ndir = (dir + 3) % 4
+        if not visited[x][y][ndir]:
+            que.append([x, y, ndir])
+            visited[x][y][ndir] = True
+
+    d += 1
