@@ -12,8 +12,5 @@ for tc in range(1, T + 1):
             if t[0] >= w[i]:
                 t.pop(0)
                 total += w[i]
-            
-            elif t[0] < w[i]:
-                continue
-    
+                
     print(f'#{tc} {total}')
