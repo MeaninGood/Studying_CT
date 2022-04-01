@@ -44,7 +44,7 @@ for i in range(0, len(tmp), 2):
     # arr[tmp[i + 1]].append(tmp[i])
     
 visited = [False for i in range(len(arr))]
-print(arr)
+
 dfs(1)
 print()
 bfs(1)
