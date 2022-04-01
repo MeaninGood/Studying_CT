@@ -67,7 +67,7 @@ def recur(cur):
     if dp[cur] != -1:
         return dp[cur]
 
-    ret = max(ret, recur(cur - 1) + recur(cur - 2))
+    ret = recur(cur - 1) + recur(cur - 2)
     dp[cur] = ret
     return dp[cur]
 
@@ -76,21 +76,21 @@ print(recur(n) %10007)
 
 
 
-dp = [-1 for i in range(1010)]
-def recur(cur):
-    ret = 1
-    if cur > n:
-        return -1000000
+# dp = [-1 for i in range(1010)]
+# def recur(cur):
+#     ret = 1
+#     if cur > n:
+#         return -1000000
     
-    if cur == n:
-        return ret
+#     if cur == n:
+#         return ret
 
-    if dp[cur] != -1:
-        return dp[cur]
+#     if dp[cur] != -1:
+#         return dp[cur]
 
-    ret = max(ret, recur(cur + 1) + recur(cur + 2))
-    dp[cur] = ret
-    return dp[cur]
+#     ret = max(ret, recur(cur + 1) + recur(cur + 2))
+#     dp[cur] = ret
+#     return dp[cur]
 
-n = int(input())
-print(recur(0) %10007)
+# n = int(input())
+# print(recur(0) %10007)
