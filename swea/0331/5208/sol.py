@@ -51,19 +51,19 @@ def recur(cur, c):
     # cur + 1 : 다음칸 봐주기
     # arr[cur] - 1 : 충전량, 다음 칸에서는 1 빠진 충전량으로 계산해야 하므로
     # arr[cur] - 1로 해 줌
-    # 충전했을 때는 + 1, 충전 안 했을 때는 그냥 재귀호출하면서
+    # 충전했을 때는 + 1, 충전 안 했을 때는 그냥 재귀호출하면서원래의 충전량 c - 1
     # ret에 가장 적은 횟수를 저장해 줌
     ret = min(recur(cur + 1, arr[cur] - 1) + 1, recur(cur + 1, c - 1))
     # dp배열에 저장
     dp[cur][c] = ret
-    print(dp)
+
     return ret
 
 T = int(input())
 
 for tc in range(1, T + 1):
     n, *arr = map(int, input().split())
-    dp = [[-1 for i in range(10)] for j in range(10)]
+    dp = [[-1 for i in range(210)] for j in range(210)]
 
     print(f'#{tc} {recur(0, arr[0])}')
     
