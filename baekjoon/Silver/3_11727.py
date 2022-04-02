@@ -73,7 +73,7 @@ def recur(cur):
     
 
 n = int(input())
-print(recur(n))
+print(recur(n) % 10007)
 
 
 
@@ -99,4 +99,4 @@ def recur(cur):
     
 
 n = int(input())
-print(recur(0))
+print(recur(0) % 10007)
