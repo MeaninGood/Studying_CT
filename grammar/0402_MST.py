@@ -96,26 +96,26 @@ union find 최적화 두가지
 #         return x
 #     else:
 #         return find(par[x])
-#
+
 # def union_(a, b):
 #     a = find(a)
 #     b = find(b)
-#
+
 #     if a == b:
 #         return
-#
+
 #     par[a] = b
-#
+
 # n, m = map(int, input().split())
 # v = [list(map(int, input().split())) for i in range(m)]
 # s, e = map(int, input().split())
 # par = [i for i in range(100010)]
-#
+
 # v.sort(key=lambda x:-x[2])
-#
+
 # for i in range(m):
 #     union_(v[i][0], v[i][1])
-#
+
 #     if find(s) == find(e):
 #         print(v[i][2])
 #         exit()
