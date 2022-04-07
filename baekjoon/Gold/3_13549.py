@@ -18,53 +18,40 @@
 
 '''
 
+import heapq
 
+s, e = map(int, input().split())
+# v = [[i, 0] for i in range(100010)]
+dist = [1000000000 for i in range(100010)]
 
-# import heapq
-#
-# n, m = map(int, input().split())
-# s = int(input())
-# v = [[] for i in range(n + 1)]
-#
-# for i in range(m):
-#     a, b, c = map(int, input().split())
-#
-#     v[a].append([b, c])
-#
-# dist = [1000000000 for i in range(n + 1)]
-#
-# pq = []
-#
-# dist[s] = 0
-# heapq.heappush(pq, (0, s))
-# while len(pq) > 0:
-#     # mn = 100000000
-#     # cur = 0
-#     # for i in range(1, n + 1):
-#     #     if not visited[i] and dist[i] < mn:
-#     #         mn = dist[i]
-#     #         cur = i
-#     d, cur = heapq.heappop(pq)
-#
-#     # if visited[cur]:
-#     #     continue
-#     #
-#     # visited[cur] = True
-#
-#     if dist[cur] != d:
-#         continue
-#
-#     for i in range(len(v[cur])):
-#         nxt = v[cur][i][0]
-#         nd = dist[cur] + v[cur][i][1]
-#
-#         if dist[nxt] > nd:
-#             dist[nxt] = nd
-#             heapq.heappush(pq, (nd, nxt))
-#
-#
-# for i in range(1, n + 1):
-#     if dist[i] == 1000000000:
-#         print('INF')
-#     else:
-#         print(dist[i])
+def in_range(x):
+    return 0 <= x < 100010
+
+pq = []
+dist[s] = 0
+heapq.heappush(pq, (0, s))
+while len(pq) > 0:
+    d, cur = heapq.heappop(pq)
+    
+    if cur == e:
+        print(dist[cur])
+        break
+    
+    if dist[cur] != d:
+        continue
+    
+    for i in [cur - 1, cur + 1, cur * 2]:
+        nxt = i
+        nd = dist[cur] + 1
+        
+        if not in_range(nxt):
+            continue
+        
+        if i == cur * 2:
+            nxt = i
+            nd = dist[cur]
+        
+        if dist[nxt] > nd:
+            dist[nxt] = nd
+            heapq.heappush(pq, (nd, nxt))
+            
