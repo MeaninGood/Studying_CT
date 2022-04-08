@@ -69,7 +69,6 @@ while 1:
         heapq.heappush(pq, (arr[x][y], x, y))
         while len(pq) > 0:
             d, x, y = heapq.heappop(pq)
-            print(d, x, y)
             
             if dist[x][y] != d:
                 continue

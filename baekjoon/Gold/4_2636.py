@@ -54,7 +54,7 @@ def get_dist(x, y, arr):
     dist[x][y] = arr[x][y]
     
     heapq.heappush(pq, (arr[x][y], x, y))
-    ret = 1
+    # ret = 1
     while len(pq) > 0:
         d, x, y = heapq.heappop(pq)
         
@@ -71,8 +71,8 @@ def get_dist(x, y, arr):
                 dist[nx][ny] = nd
                 heapq.heappush(pq, (nd, nx, ny))
         
-        ret += 1
-    return ret
+    #     ret += 1
+    # return ret
             
     
 

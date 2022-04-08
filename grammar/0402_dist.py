@@ -34,52 +34,99 @@ q = []
 heapq.heappush(q, (0, start))
 dist, now = heapq.heappop(q)
 '''
+# import heapq
+#
+# n, m = map(int, input().split())
+# s = int(input())
+# v = [[] for i in range(n + 1)]
+#
+# for i in range(m):
+#     a, b, c = map(int, input().split())
+#
+#     v[a].append([b, c])
+#
+# dist = [1000000000 for i in range(n + 1)]
+#
+# pq = []
+#
+# dist[s] = 0
+# heapq.heappush(pq, (0, s))
+# while len(pq) > 0:
+#     # mn = 100000000
+#     # cur = 0
+#     # for i in range(1, n + 1):
+#     #     if not visited[i] and dist[i] < mn:
+#     #         mn = dist[i]
+#     #         cur = i
+#     d, cur = heapq.heappop(pq)
+#
+#     # if visited[cur]:
+#     #     continue
+#     #
+#     # visited[cur] = True
+#
+#     if dist[cur] != d:
+#         continue
+#
+#     for i in range(len(v[cur])):
+#         nxt = v[cur][i][0]
+#         nd = dist[cur] + v[cur][i][1]
+#
+#         if dist[nxt] > nd:
+#             dist[nxt] = nd
+#             heapq.heappush(pq, (nd, nxt))
+#
+#
+# for i in range(1, n + 1):
+#     if dist[i] == 1000000000:
+#         print('INF')
+#     else:
+#         print(dist[i])
+
+
 import heapq
 
-n, m = map(int, input().split())
-s = int(input())
+n, m, x = map(int, input().split())
 v = [[] for i in range(n + 1)]
+rv = [[] for i in range(n + 1)]
 
 for i in range(m):
     a, b, c = map(int, input().split())
 
     v[a].append([b, c])
+    rv[b].append([a, c])
+
+def get_dist(s, v):
+    pq = []
+
+    dist[s] = 0
+    heapq.heappush(pq, (0, s))
+    while len(pq) > 0:
+        d, cur = heapq.heappop(pq)
+
+        if dist[cur] != d:
+            continue
+
+        for i in range(len(v[cur])):
+            nxt = v[cur][i][0]
+            nd = d + v[cur][i][1]
+
+            if dist[nxt] > nd:
+                dist[nxt] = nd
+                heapq.heappush(pq, (nd, nxt))
 
 dist = [1000000000 for i in range(n + 1)]
+get_dist(x, v)
+ans = dist.copy()
 
-pq = []
-
-dist[s] = 0
-heapq.heappush(pq, (0, s))
-while len(pq) > 0:
-    # mn = 100000000
-    # cur = 0
-    # for i in range(1, n + 1):
-    #     if not visited[i] and dist[i] < mn:
-    #         mn = dist[i]
-    #         cur = i
-    d, cur = heapq.heappop(pq)
-
-    # if visited[cur]:
-    #     continue
-    #
-    # visited[cur] = True
-
-    if dist[cur] != d:
-        continue
-
-    for i in range(len(v[cur])):
-        nxt = v[cur][i][0]
-        nd = dist[cur] + v[cur][i][1]
-
-        if dist[nxt] > nd:
-            dist[nxt] = nd
-            heapq.heappush(pq, (nd, nxt))
-
+dist = [1000000000 for i in range(n + 1)]
+get_dist(x, rv)
 
 for i in range(1, n + 1):
-    if dist[i] == 1000000000:
-        print('INF')
-    else:
-        print(dist[i])
+    ans[i] += dist[i]
 
+mx = -1
+for i in range(1, n + 1):
+    mx = max(mx, ans[i])
+
+print(mx)
