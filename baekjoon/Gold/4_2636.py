@@ -63,7 +63,7 @@ def get_dist(x, y, arr):
             ny = y + dy[i]
             
             if not in_range(nx, ny):
-                continue
+                continue 
             
             nd = dist[x][y] + arr[nx][ny]
             
