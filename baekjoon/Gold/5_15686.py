@@ -31,35 +31,3 @@
 
 '''
 
-import sys
-si = sys.stdin.readline
-
-def in_range(x, y):
-    return 0 <= x < n and 0 <= y < n
-
-
-def dfs(x, y):
-    visited[x][y] = True
-    
-    if arr[x][y] == 1:
-        pass
-    
-
-        
-        if not in_range(nx, ny) or visited[nx][ny]:
-            continue
-        
-        dfs(nx, ny)
-        visited[nx][ny] = False
-
-
-n, m = map(int, si().split())
-arr = [list(map(int, si().split())) for _ in range(n)]
-
-visited = [[False for i in range(n)] for j in range(n)]
-
-
-for i in range(n):
-    for j in range(n):
-        if arr[i][j] == 2:
-            dfs(i, j)

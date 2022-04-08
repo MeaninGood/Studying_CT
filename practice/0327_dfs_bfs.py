@@ -178,8 +178,61 @@
 
 
 
+
 # 16562 친구비
 
-from pprint import pprint
-arr = [[0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0]]
-pprint(arr)
+# n, m, k = map(int, input().split())
+# arr = list(map(int, input().split()))
+# v = [[] for _ in range(n + 1)]
+
+# for _ in range(m):
+#     a, b = map(int, input().split())
+    
+#     v[a].append(b)
+#     v[b].append(a)
+
+
+
+dx = [0, 1, 0, -1]
+dy = [1, 0, -1, 0]
+def dfs(x, y):
+    visited[x][y] = True
+    
+    for i in range(4):
+        nx = x + dx[i]
+        ny = y + dy[i]
+    
+    # for i in [(0, 1), (1, 0), (0, -1), (-1,0)]:
+        if not (0 <= nx < n - 1 and 0 <= ny < m - 1) or v[nx][ny] == 0 or visited[nx][ny]:
+            continue
+        
+        dfs(nx, ny)
+
+from collections import deque    
+def bfs(x, y):
+    que = deque()
+    visited = [[False for i in range(m)] for j in range(n)]
+
+    que.append([x, y])
+    visited[x][y] = True
+    
+    while len(que) > 0 :
+        x, y = que[0][0], que[0][1]
+        que.popleft()
+        
+        for i in range(4):
+            nx = x + dx[i]
+            ny = y + dy[i]
+            
+            if not (0 <= nx < n - 1 and 0 <= ny < m - 1) or v[nx][ny] == 0 or visited[nx][ny]:
+                continue
+            
+            que.append([nx, ny])
+            visited[nx][ny] = True            
+            
+    
+    
+n, m = map(int, input())
+v = [list(map(int, input())) for _ in range(n)]
+
+visited = [[False for i in range(m)] for j in range(n)]
