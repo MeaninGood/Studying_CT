@@ -153,81 +153,90 @@
 
 
 
-import sys, heapq
-si = sys.stdin.readline
+# import sys, heapq
+# si = sys.stdin.readline
 
-def in_range(x, y):
-    return 0 <= x < n and 0 <= y < m
+# def in_range(x, y):
+#     return 0 <= x < n and 0 <= y < m
 
-cx = [0, 1, 0, -1]
-cy = [1, 0, -1, 0]
-def walls(x, y):
-    for c in range(4):
-        wx = x + cx[c]
-        wy = y + cy[c]
+# cx = [0, 1, 0, -1]
+# cy = [1, 0, -1, 0]
+# def walls(x, y):
+#     for c in range(4):
+#         wx = x + cx[c]
+#         wy = y + cy[c]
 
-        if not in_range(wx, wy):
-            continue
+#         if not in_range(wx, wy):
+#             continue
         
-        if arr[wx][wy] == '#':
-            return True
+#         if arr[wx][wy] == '#':
+#             return True
         
-    return False
+#     return False
             
             
-dx = [0, 1, 0, -1]
-dy = [1, 0, -1, 0]
-def get_dist(x, y, arr):
-    pq = []
-    dist[x][y] = 0
+# dx = [0, 1, 0, -1]
+# dy = [1, 0, -1, 0]
+# def get_dist(x, y, arr):
+#     pq = []
+#     dist[x][y] = 0
     
-    heapq.heappush(pq, (0, x, y))
-    while len(pq) > 0:
-        d, x, y = heapq.heappop(pq)
+#     heapq.heappush(pq, (0, x, y))
+#     while len(pq) > 0:
+#         d, x, y = heapq.heappop(pq)
         
-        if dist[x][y] != d:
-            continue
+#         if dist[x][y] != d:
+#             continue
         
         
-        for i in range(4):
-            nx = x + dx[i]
-            ny = y + dy[i]
+#         for i in range(4):
+#             nx = x + dx[i]
+#             ny = y + dy[i]
             
-            if not in_range(nx, ny):
-                continue
+#             if not in_range(nx, ny):
+#                 continue
             
-            if arr[nx][ny] == '#':
-                continue
+#             if arr[nx][ny] == '#':
+#                 continue
                 
-            if walls(x, y) and walls(nx, ny):
-                nd = dist[x][y] + 0
+#             if walls(x, y) and walls(nx, ny):
+#                 nd = dist[x][y] + 0
             
-            else:
-                nd = dist[x][y] + 1
+#             else:
+#                 nd = dist[x][y] + 1
                 
 
-            if dist[nx][ny] > nd:
-                dist[nx][ny] = nd
-                heapq.heappush(pq, (nd, nx, ny))
+#             if dist[nx][ny] > nd:
+#                 dist[nx][ny] = nd
+#                 heapq.heappush(pq, (nd, nx, ny))
             
     
 
 
-n, m = map(int, si().split())
-arr = [list(si().rstrip()) for _ in range(n)]
-sx, sy = 0, 0
-ex, ey = 0, 0
-for i in range(n):
-    for j in range(m):
-        if arr[i][j] == 'S':
-            sx, sy = i, j
+# n, m = map(int, si().split())
+# arr = [list(si().rstrip()) for _ in range(n)]
+# sx, sy = 0, 0
+# ex, ey = 0, 0
+# for i in range(n):
+#     for j in range(m):
+#         if arr[i][j] == 'S':
+#             sx, sy = i, j
 
-        if arr[i][j] == 'E':
-            ex, ey = i, j
+#         if arr[i][j] == 'E':
+#             ex, ey = i, j
 
 
-dist = [[1000000000 for i in range(m)] for j in range(n)]
+# dist = [[1000000000 for i in range(m)] for j in range(n)]
 
-get_dist(sx, sy, arr)
+# get_dist(sx, sy, arr)
 
-print(dist[ex][ey])
+# print(dist[ex][ey])
+
+
+def where(flower):
+    if flower:
+        return '찾았다'
+    
+    
+flower = False
+print(where(flower))

@@ -38,42 +38,98 @@
 '''
 
 
+# import sys, heapq
+# si = sys.stdin.readline
+
+# def get_dist(s, v, pr):
+#     pq = []
+    
+#     dist[s] = 0
+#     heapq.heappush(pq, (0, s, pr))
+#     while len(pq) > 0:
+#         d, cur, pr = heapq.heappop(pq)
+        
+#         if dist[cur] != d:
+#             continue
+        
+#         for i in range(len(v[cur])):
+#             nxt = v[cur][i][0]
+#             nd = d + v[cur][i][1]
+            
+#             if dist[nxt] > nd:
+#                 dist[nxt] = nd
+#                 prv[nxt] = cur
+#                 heapq.heappush(pq, (nd, nxt, cur))
+
+
+# n = int(si())
+# m = int(si())
+# v = [[] for _ in range(n + 1)]
+# for _ in range(m):
+#     a, b, c = map(int, si().split())
+#     v[a].append([b, c])
+    
+# s, e = map(int, si().split())
+    
+# dist = [1000000000 for _ in range(n + 1)]
+# prv = [0 for _ in range(n + 1)]
+# get_dist(s, v, -1)
+
+# print(dist[e])
+# print(prv[e])
+
+
 import sys, heapq
 si = sys.stdin.readline
-
-def get_dist(s, v, pr):
-    pq = []
-    
-    dist[s] = 0
-    heapq.heappush(pq, (0, s, pr))
-    while len(pq) > 0:
-        d, cur, pr = heapq.heappop(pq)
-        
-        if dist[cur] != d:
-            continue
-        
-        for i in range(len(v[cur])):
-            nxt = v[cur][i][0]
-            nd = d + v[cur][i][1]
-            
-            if dist[nxt] > nd:
-                dist[nxt] = nd
-                prv[nxt] = cur
-                heapq.heappush(pq, (nd, nxt, cur))
 
 
 n = int(si())
 m = int(si())
 v = [[] for _ in range(n + 1)]
-for _ in range(m):
+dist = [1000000000 for i in range(n + 1)]
+
+for i in range(m):
     a, b, c = map(int, si().split())
+    
     v[a].append([b, c])
     
 s, e = map(int, si().split())
     
-dist = [1000000000 for _ in range(n + 1)]
-prv = [0 for _ in range(n + 1)]
-get_dist(s, v, -1)
+    
+prv = [-1 for _ in range(n + 1)]    
 
+pq = []
+
+dist[s] = 0
+heapq.heappush(pq, (0, s))
+while len(pq) > 0:
+    # d, cur, pr = heapq.heappop(pq)
+    d, cur = heapq.heappop(pq)
+    
+    if dist[cur] != d:
+        continue
+    
+    # for i in range(len(v[cur])):
+    #     nxt = v[cur][i][0]
+    #     nd = d + v[cur][i][1]
+    #     prv[nxt] = cur
+    
+    for nxt, nd in v[cur]:
+        nd += d
+
+        if dist[nxt] > nd:
+            dist[nxt] = nd
+            prv[nxt] = cur
+            # heapq.heappush(pq, (nd, nxt, cur))
+            heapq.heappush(pq, (nd, nxt))
+            
 print(dist[e])
-print(prv[e])
+
+ans = []
+cur = e
+while cur != -1:
+    ans.append(cur)
+    cur = prv[cur]
+
+print(len(ans))
+print(*ans[::-1])
