@@ -1,41 +1,43 @@
 import sys
 from collections import deque
-si = sys.stdin.readline
+input = sys.stdin.readline
 
-
+cnt = 1
 def bfs(s):
+    global cnt
+    
     que = deque()
-    visited = [False for i in range(200010)]
-    cnt = 0
-    ret = 0
+    visited = [False for i in range(100010)]
     
     que.append(s)
     visited[s] = True
-    
+    ret = 0
     while len(que) > 0:
         size = len(que)
 
         for _ in range(size):
             cur = que.popleft()
             
+            visited[cur] = True
+            
             if cur == k:
-                ret += 1
+                for i in que:
+                    print(i)
+                    if i == k:
+                        cnt += 1        
+                return ret
      
             for nxt in [cur -1, cur + 1, 2 * cur]:
-                if not (0 <= nxt < 200010) or visited[nxt]:
+                if not (0 <= nxt < 100010) or visited[nxt]:
                     continue
-                
-                visited[nxt] = True
+
                 que.append(nxt)
                 
-        cnt += 1
-    # visited[cur] = False
-    return cnt, ret
+        ret += 1
+        print(f'#{ret}')
 
-n, k = map(int, si().split())
-
-v = [i for i in range(200010)]
-
+n, k = map(int, input().split())
 
 print(bfs(n))
-        
+print(cnt)
+
