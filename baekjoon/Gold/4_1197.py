@@ -65,14 +65,14 @@ def union_(a, b):
     
     if rnk[a] < rnk[b]:
         par[a] = b
-        sz[b] += sz[a]
+        # sz[b] += sz[a]
     
     if rnk[a] > rnk[b]:
         par[b] = a
-        sz[a] += sz[b]
+        # sz[a] += sz[b]
     else:
         par[a] = b
-        sz[b] += sz[a]
+        # sz[b] += sz[a]
         rnk[b] += 1
         
                 
@@ -81,7 +81,7 @@ v = [list(map(int, input().split())) for i in range(m)]
 
 par = [i for i in range(n + 1)]
 rnk = [0 for _ in range(n + 1)]
-sz = [1 for _ in range(n + 1)]
+# sz = [1 for _ in range(n + 1)]
     
 v.sort(key = lambda x: x[2])
 
