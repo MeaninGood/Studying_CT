@@ -71,7 +71,7 @@ while 1:
             d, x, y = heapq.heappop(pq)
             
             if dist[x][y] != d:
-                continue
+                continue 
             
             for i in range(4):
                 nx = x + dx[i]
