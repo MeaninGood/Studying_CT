@@ -238,7 +238,7 @@ def check_b(x, y, cur):
 def recur(num):
     if num == len(li):
         for i in range(9):
-            print(*arr[i])
+            print(*arr[i], sep='')
         exit()
     
     x1, y1 = li[num]
@@ -249,7 +249,7 @@ def recur(num):
             arr[x1][y1] = 0
         
 
-arr = [list(map(int, si().split())) for _ in range(9)]
+arr = [list(map(int, si().rstrip())) for _ in range(9)]
 
 li = []
 for i in range(9):
