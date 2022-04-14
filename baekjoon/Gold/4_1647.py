@@ -36,7 +36,7 @@
 
 '''
 
-import sys, heapq
+import sys
 input = sys.stdin.readline
 
 
@@ -77,8 +77,8 @@ rnk = [0 for i in range(n + 1)]
 par = [i for i in range(n + 1)]
 total = 0
 cnt = 0
-for i in range(n + 1):
-    a, b = v[i][0], v[i][1]
+for i in range(m):
+    a, b, c = v[i]
     
     a = find_(a)
     b = find_(b)
@@ -87,8 +87,8 @@ for i in range(n + 1):
         continue
     
     union_(a, b)
-    total += v[i][2]
     cnt += 1
+    total += c
     
     if cnt == n - 2:
         break
