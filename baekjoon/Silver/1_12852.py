@@ -32,30 +32,22 @@ dp[3] = 1
 dp[4] = 2
 dp[5] = 3
 dp[6] = 2
-# dp[7] = 3
-# dp[8] = 3
-# dp[9] = 2
-# dp[10] = 3
-# dp[11] = 4
-# dp[12] = 3
-# dp[13] = 4
-# dp[14] = 4
 
 ans = [n]
 if n > 6:
     for i in range(6, n + 1):
         if i % 3 == 0 and i % 2 == 0:
             dp[i] = min(dp[i // 3] + 1, dp[i // 2] + 1)
-            # ans.append(i)
+
         elif i % 3 == 0:
             dp[i] = min(dp[i // 3] + 1, dp[i - 1] + 1)
-            # ans.append(i // 3)
+
         elif i % 2 == 0:
             dp[i] = min(dp[i // 2] + 1, dp[i - 1] + 1)
-            # ans.append(i // 2)
+
         else:
             dp[i] = dp[i - 1] + 1
-            # ans.append(i - 1)
+
     print(dp[n])
 else:
     print(dp[n])
@@ -93,4 +85,5 @@ while 1:
     else:
         ans.append(tmp - 1)
         tmp -= 1
+        
 print(*ans)
