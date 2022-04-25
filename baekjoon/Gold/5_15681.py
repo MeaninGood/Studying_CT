@@ -62,104 +62,110 @@
 
 
 
+# import sys
+# input = sys.stdin.readline
 
-def find_(x):
-    if par[x] == x:
-        return x
+# def find_(x):
+#     if par[x] == x:
+#         return x
     
-    return find_(par[x])
+#     return find_(par[x])
 
-def union_(a, b):
-    a, b = find_(a), find_(b)
+# def union_(a, b):
+#     a, b = find_(a), find_(b)
     
-    if a == b:
-        return
+#     if a == b:
+#         return
     
-    if rnk[a] < rnk[b]:
-        par[a] = b
-        sz[b] += sz[a]
+#     if rnk[a] < rnk[b]:
+#         par[a] = b
+#         sz[b] += sz[a]
         
-    if rnk[a] > rnk[b]:
-        par[b] = a
-        sz[a] += sz[b]
+#     if rnk[a] > rnk[b]:
+#         par[b] = a
+#         sz[a] += sz[b]
     
-    else:
-        par[b] = a
-        sz[a] += sz[b]
-        rnk[a] += 1
+#     else:
+#         par[b] = a
+#         sz[a] += sz[b]
+#         rnk[a] += 1
         
-n, r, q = map(int, input().split())
-
-par = [i for i in range(n + 1)]
-rnk = [0 for i in range(n + 1)]
-sz = [1 for i in range(n + 1)]
-
-v = []
-for i in range(n - 1):
-    c, d = map(int, input().split())
-    
-    if c == r:
-        union_(c, d)
-    else:
-        v.append([c, d])
-print(v)
-for i in range(len(v)):
-    e, f = v[i]
-    
-    union_(e, f)
-
-for i in range(q):
-    x = int(input())
-    print(sz[x])
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 # n, r, q = map(int, input().split())
-# v = [[] for i in range(n + 1)]
 
+# par = [i for i in range(n + 1)]
+# rnk = [0 for i in range(n + 1)]
+# sz = [1 for i in range(n + 1)]
+
+# v = []
 # for i in range(n - 1):
-#     a, b = map(int, input().split())
+#     c, d = map(int, input().split())
+    
+#     if c == r:
+#         union_(c, d)
+#     else:
+#         v.append([c, d])
 
-#     v[a].append(b)
-#     v[b].append(a)
-
-# sz = [0 for i in range(n + 1)]
-
-# def dfs(cur, prv):
-#     sz[cur] = 1
-
-#     for nxt in v[cur]:
-#         if nxt == prv:
-#             continue
-
-#         sz[cur] += dfs(nxt, cur)
-
-#     return sz[cur]
-
-# dfs(r, -1)
+# for i in range(len(v)):
+#     e, f = v[i]
+    
+#     union_(e, f)
 
 # for i in range(q):
 #     x = int(input())
-
 #     print(sz[x])
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+import sys
+input = sys.stdin.readline
+sys.setrecursionlimit(100010)
+
+def dfs(cur, prv):
+    sz[cur] = 1
+
+    for nxt in v[cur]:
+        if nxt == prv:
+            continue
+
+        sz[cur] += dfs(nxt, cur)
+
+    return sz[cur]
+
+
+n, r, q = map(int, input().split())
+v = [[] for i in range(n + 1)]
+
+sz = [0 for i in range(n + 1)]
+
+for i in range(n - 1):
+    a, b = map(int, input().split())
+
+    v[a].append(b)
+    v[b].append(a)
+
+dfs(r, -1)
+
+for i in range(q):
+    x = int(input())
+
+    print(sz[x])

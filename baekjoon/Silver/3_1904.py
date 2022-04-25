@@ -7,13 +7,19 @@ n = 4 // 1111 1100 0011 1001 0000 : 5
 n = 5 // 00001 00100 10000 11001 10011 00111 11111 11100 : 8
 
 '''
-n = int(input())
 
-if n == 1:
-    print(1)
-if n == 2:
-    print(2)
-if n == 3:
-    print(3)
-if n > 3:
-    print(n - 1 + n - 2)
+n = int(input())
+dp = [-1 for _ in range(1000010)]
+
+dp[1] = 1
+dp[2] = 2
+
+if n < 3:
+    print(dp[n])
+    
+elif n >= 3:
+    for i in range(3, n + 1):
+        dp[i] = (dp[i - 1] + dp[i - 2]) % 15746
+    
+    print(dp[n])
+    
