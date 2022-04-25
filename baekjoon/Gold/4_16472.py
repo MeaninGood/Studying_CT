@@ -64,15 +64,29 @@ abbcaccba
 
 n = int(input())
 arr = input()
-sz = len(arr)
 
-s = 0
-e = 0
+m = len(arr)
+
+tmp = arr[0]
+idx = 0
+
+cnt = 0
 total = 0
-check = []
-while s < d and e < d:
-    check.append(arr[s])
+ans = 0
+for i in range(1, m):
+    if cnt > n:
+        cnt = 0
+        tmp = arr[i]
+        total -= (i - idx)
+        ans = max(total, ans)
+        
+    if tmp != arr[i]:
+        cnt += 1
+        idx = i
+        tmp = arr[i]
+        
     
-    if arr[e] in check:
-        
-        
+    elif tmp == arr[i]:
+        total += 1
+    
+print(ans)

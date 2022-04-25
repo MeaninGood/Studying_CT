@@ -119,52 +119,82 @@ YES
 #         print('YES') 
     
 
-import sys
-from collections import deque
-input = sys.stdin.readline
+# import sys
+# from collections import deque
+# input = sys.stdin.readline
 
 
 
-def bfs(s):
-    que = deque()
-    que.append(s)
+# def bfs(s):
+#     que = deque()
+#     que.append(s)
     
-    while que:
-        size = len(que)
+#     while que:
+#         size = len(que)
         
-        for _ in range(size):
-            cur = que.popleft()
+#         for _ in range(size):
+#             cur = que.popleft()
             
-            for nxt in v[cur]:
-                if visited[nxt]:
-                    continue
+#             for nxt in v[cur]:
+#                 if visited[nxt]:
+#                     continue
                 
-                que.append(nxt)
-                visited[nxt] = True
+#                 que.append(nxt)
+#                 visited[nxt] = True
                 
-n, m = map(int, input().split())
-v = [[] for _ in range(n + 1)]
+# n, m = map(int, input().split())
+# v = [[] for _ in range(n + 1)]
 
-visited = [False for i in range(n + 1)]
-for i in range(m):
-    a, b = map(int, input().split())
+# visited = [False for i in range(n + 1)]
+# for i in range(m):
+#     a, b = map(int, input().split())
     
-    v[a].append(b)
+#     v[a].append(b)
     
-    if b in v[a] and a in v[b]:
-        continue
+#     if b in v[a] and a in v[b]:
+#         continue
     
-    bfs(a)
+#     bfs(a)
     
-visited = [False for i in range(n + 1)]
+# visited = [False for i in range(n + 1)]
 
     
-bfs(1)
-print(visited)
+# bfs(1)
+# print(visited)
 
 
-par = [i for i in range(1000010)]
-rnk = [0 for i in range(1000010)]
+# par = [i for i in range(1000010)]
+# rnk = [0 for i in range(1000010)]
+
+# def find(x):
+#     if par[x] == x:
+#         return x
+#     else:
+#         par[x] = find(par[x])
+#         return par[x]
+
+# def union_(a, b):
+#     a = find(a)
+#     b = find(b)
+
+#     if a == b:
+#         return
+
+#     if rnk[a] < rnk[b]:
+#         par[a] = b
+
+#     elif rnk[a] > rnk[b]:
+#         par[b] = a
+
+#     else:
+#         par[a] = b
+#         rnk[b] += 1
+
+
+
+
+
+
 
 def find(x):
     if par[x] == x:
@@ -180,14 +210,62 @@ def union_(a, b):
     if a == b:
         return
 
+    # 뭐가 많아서 어려워 보일 수 있는데 하나씩 뜯어보면 별거 없습니다.
+    # sz는 이 연결요소에 있는 노드 개수. 야옹스쿨에서 했던 내용.
+    # edge는 이 연결요소에 있는 간선 개수. 초기값이 1이 아니라 각 노드에 있는 간선 수라는 것만 다르고 sz와 동일.
+    # visited는 이 연결요소에 변호된 간선이 있는지 여부. a를 b에 붙인다면 이제 루트가 b일텐데, a쪽에 변호된게 있었다면 이제 b도 있다는 뜻으로 or 연산 사용.
     if rnk[a] < rnk[b]:
         par[a] = b
-
+        sz[b] += sz[a]
+        edge[b] += edge[a]
+        visited[b] |= visited[a]
     elif rnk[a] > rnk[b]:
         par[b] = a
-
+        sz[a] += sz[b]
+        edge[a] += edge[b]
+        visited[a] |= visited[b]
     else:
         par[a] = b
         rnk[b] += 1
+        sz[b] += sz[a]
+        edge[b] += edge[a]
+        visited[b] |= visited[a]
 
-    
+n, m = map(int, input().split())
+d = [{} for i in range(200010)]
+v = []
+visited = [False for i in range(200010)]
+par = [i for i in range(200010)]
+rnk = [0 for i in range(200010)]
+sz = [1 for i in range(200010)]
+edge = [0 for i in range(200010)]
+
+# 간선을 일단 dict에 저장.
+for i in range(m):
+    a, b = map(int, input().split())
+
+    d[a][b] = True
+
+for i in range(1, n + 1):
+    # i에서 나가는 간선들을 보며 상대방도 i로 오는 간선이 있다면 양방향 간선 추가. 없으면 변호.
+    for j in d[i].keys():
+        if d[j].get(i, False):
+            v.append([i, j])
+            edge[i] += 1
+        else:
+            visited[j] = True
+
+# union
+for i in range(len(v)):
+    union_(v[i][0], v[i][1])
+
+# 각 연결요소를 보며 변호 안된 트리가 있다면 NO 출력.
+# 간선 수가 sz - 1개면 트리. 이 상황은 양방향이므로 2 * (sz - 1)로 계산.
+for i in range(1, n + 1):
+    x = find(i)
+
+    if edge[x] == 2 * sz[x] - 2 and not visited[x]:
+        print("NO")
+        exit()
+
+print("YES")

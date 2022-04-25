@@ -92,7 +92,7 @@ for i in range(n - 1):
     for j in range(i + 1, n):
         x2, y2 = v[j]
         
-        tmp = (abs(x2 - x1) ** 2 + abs(y2 - y1) ** 2) ** (1/2)
+        tmp = (abs(x1 - x2) ** 2 + abs(y1 - y2) ** 2) ** (1/2)
         
         arr.append([i, j, tmp])
 
@@ -100,13 +100,15 @@ arr.sort(key = lambda x: x[2])
 
 par = [i for i in range(n + 1)]
 rnk = [0 for i in range(n + 1)]
-print(arr)
 
-total = 0.0
+total = 0
+cnt = 0
 for a, b, c in arr:
-    union_(a, b)
-    total += c
+    if find_(a) != find_(b):
+        union_(a, b)
+        total += c
+        cnt += 1
     
-    if find_(0) == find_(n - 1):
+    if cnt == n - 1:
         print(total)
         exit()

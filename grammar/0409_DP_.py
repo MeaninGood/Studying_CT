@@ -78,49 +78,49 @@
 # n, m = map(int, input().split())
 # arr = list(map(int, input().split()))
 # dp = [[10000000 for i in range(310)] for j in range(310)]
-#
+
 # dp[0][0] = arr[0]
 # for i in range(1, m):
 #     dp[i][i] = max(dp[i - 1][i - 1], arr[i])
-#
+
 # for i in range(n):
 #     for j in range(0, min(i, m)):
 #         total = 0
 #         for k in range(j, i + 1)[::-1]:
 #             total += arr[k]
 #             dp[i][j] = min(dp[i][j], max(dp[k - 1][j - 1], total))
-#
+
 # print(dp[n - 1][m - 1])
 
 
-# n = int(input())
-# arr = [[0 for i in range(3)]] + [list(map(int, input().split())) for i in range(n)]
-# dp = [[0 for i in range(3)] for j in range(n + 1)]
-#
-# for i in range(1, n + 1):
-#     mn = 1000000
-#     midx = 0
-#     for j in range(3):
-#         if mn > dp[i - 1][j]:
-#             mn = dp[i - 1][j]
-#             midx = j
-#
-#     for j in range(3):
-#         if j == midx:
-#             continue
-#
-#         dp[i][j] = mn + arr[i][j]
-#
-#     mn = 1000000
-#     for j in range(3):
-#         if j == midx:
-#             continue
-#
-#         mn = min(mn, dp[i - 1][j])
-#
-#     dp[i][midx] = mn + arr[i][midx]
-#
-# print(min(dp[n]))
+n = int(input())
+arr = [[0 for i in range(3)]] + [list(map(int, input().split())) for i in range(n)]
+dp = [[0 for i in range(3)] for j in range(n + 1)]
+
+for i in range(1, n + 1):
+    mn = 1000000
+    midx = 0
+    for j in range(3):
+        if mn > dp[i - 1][j]:
+            mn = dp[i - 1][j]
+            midx = j
+
+    for j in range(3):
+        if j == midx:
+            continue
+
+        dp[i][j] = mn + arr[i][j]
+
+    mn = 1000000
+    for j in range(3):
+        if j == midx:
+            continue
+
+        mn = min(mn, dp[i - 1][j])
+
+    dp[i][midx] = mn + arr[i][midx]
+
+print(min(dp[n]))
 
 # n = int(input())
 # arr = list(map(int, input().split()))
