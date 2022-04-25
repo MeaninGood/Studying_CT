@@ -85,7 +85,6 @@ for i in range(1, m):
         idx = i
         tmp = arr[i]
         
-    
     elif tmp == arr[i]:
         total += 1
     
