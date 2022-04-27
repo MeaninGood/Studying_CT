@@ -22,7 +22,6 @@ for i in range(2, n + 1):
     
     
 v.pop(0)
-print(v)
 print(idx)
 print(*v)
     

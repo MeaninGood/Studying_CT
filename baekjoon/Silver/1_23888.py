@@ -110,7 +110,8 @@
 #         print(tmp)
 
 
-
+import sys
+input = sys.stdin.readline
 
 def gcd(m, n):
     if m < n:
@@ -126,15 +127,6 @@ def gcd(m, n):
         return gcd(n, m % n)
 
 
-
-# d = [-1 for i in range(1000010)]
-
-# d[1] = a
-
-# for i in range(2, 1000010):
-#     d[i] = d[i - 1] + k
-
-
 a, d = map(int, input().split())
 n = int(input())
 for _ in range(n):
@@ -148,6 +140,6 @@ for _ in range(n):
     else:
         if b == c:
             print(a + (b - 1) * d)
-        tmp = gcd(a, d)
-                    
-        print(tmp)
+        else:
+            tmp = gcd(a, d)        
+            print(tmp)
