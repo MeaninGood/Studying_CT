@@ -25,7 +25,7 @@ import sys
 input = sys.stdin.readline
 
 n = int(input())
-dp = [-1 for i in range(1000010)]
+dp = [-1 for i in range(20)]
 dp[1] = 0
 dp[2] = 1
 dp[3] = 1
@@ -36,7 +36,7 @@ dp[6] = 2
 ans = [n]
 if n > 6:
     for i in range(6, n + 1):
-        if i % 3 == 0 and i % 2 == 0:
+        if i % 6 == 0:
             dp[i] = min(dp[i // 3] + 1, dp[i // 2] + 1)
 
         elif i % 3 == 0:
@@ -52,13 +52,14 @@ if n > 6:
 else:
     print(dp[n])
 
+print(dp)
 ans = [n]
 tmp = n
 while 1:
     if tmp == 1:
         break
     
-    if tmp % 3 == 0 and tmp % 2 == 0:
+    if tmp % 6 == 0:
         if dp[tmp // 3] + 1 <= dp[tmp // 2] + 1:
             ans.append(tmp // 3)
             tmp //= 3

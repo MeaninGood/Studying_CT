@@ -63,7 +63,6 @@
 
 import sys
 input = sys.stdin.readline
-sys.setrecursionlimit(10000)
 
 def recur(cur, total, cnt = 0):
     global ret
@@ -86,3 +85,36 @@ ret = 0
 recur(0, 0, 0)
 
 print(ret)
+
+
+
+
+
+
+
+
+
+n, s = map(int, input().split())
+arr = list(map(int, input().split()))
+
+
+def recur(cur, total, cnt):
+    global ans
+    
+    if cur == n:
+        if total == s and cnt > 0:
+            ans += 1
+        return
+    # 고른다
+    recur(cur + 1, total + arr[cur], cnt + 1)
+    # 안 고른다
+    recur(cur + 1, total, cnt)
+    
+    
+ans = 0
+recur(0, 0, 0)
+
+print(ans)
+
+
+
