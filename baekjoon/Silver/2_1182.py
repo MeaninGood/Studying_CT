@@ -67,8 +67,6 @@ sys.setrecursionlimit(10000)
 
 def recur(cur, total, cnt = 0):
     global ret
-    if cur > n:
-        return
 
     if cur == n:
         if total == s and cnt > 0:
