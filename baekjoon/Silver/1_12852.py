@@ -91,32 +91,38 @@ input = sys.stdin.readline
 
 
 
-N = int(input())
-if N == 1:
+n = int(input())
+
+if n == 1:
     print(0, 1, sep='\n')
     exit()
-D = [[0] for _ in range(N + 1)]
-for i in range(2, N + 1):
-    d = 10**6
-    idx = 0
-    if i >= 1 and D[i - 1][0] + 1 < d:
-        idx = i - 1
-        d = D[idx][0] + 1
-    if not i % 2 and D[i // 2][0] + 1 < d:
-        idx = i // 2
-        d = D[idx][0] + 1
-    if not i % 3 and D[i // 3][0] + 1 < d:
-        idx = i // 3
-        d = D[idx][0] + 1
-    D[i][0] = d
-    D[i].append(idx)
 
-print(D)
-ans = [N]
-next = D[N][1]
-cnt = D[N][0]
+dp = [[0] for _ in range(n + 1)]
+for i in range(2, n + 1):
+    dist = 1000000
+    idx = 0
+    if i >= 1 and dp[i - 1][0] + 1 < dist:
+        idx = i - 1
+        dist = dp[idx][0] + 1
+        
+    if not i % 2 and dp[i // 2][0] + 1 < dist:
+        idx = i // 2
+        dist = dp[idx][0] + 1
+        
+    if not i % 3 and dp[i // 3][0] + 1 < dist:
+        idx = i // 3
+        dist = dp[idx][0] + 1
+        
+    dp[i][0] = dist
+    dp[i].append(idx)
+
+
+ans = [n]
+cnt = dp[n][0]
+nxt = dp[n][1]
 for _ in range(cnt - 1):
-    ans.append(next)
-    next = D[next][1]
+    ans.append(nxt)
+    next = dp[nxt][1]
+    
 print(cnt)
 print(*ans, 1)
