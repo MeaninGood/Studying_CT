@@ -16,7 +16,7 @@ while 1:
 
     a = 0
     b = 0    
-    for i in range(2, n + 1):
+    for i in range(2, (n // 2) + 1):
         if sieve[i] and sieve[n - i]:
             a = i
             b = n - i
