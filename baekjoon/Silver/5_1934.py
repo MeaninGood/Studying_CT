@@ -8,5 +8,4 @@ T = int(input())
 for tc in range(T):
     a, b = map(int, input().split())
     ans = gcd(a, b)
-    print(f'${ans}')
     print(a * b // ans)
