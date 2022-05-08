@@ -20,12 +20,147 @@
 
 '''
 
-def recur(cur):
-    if cur == n:
-        return
+# def recur(cur):
+#     if cur == n:
+#         return
     
-    recur(cur) + arr[cur]
-    recur(cur + 1)
+#     recur(cur) + arr[cur]
+#     recur(cur + 1)
+
+# n = int(input())
+# arr = [0] + list(map(int, input().split()))
+
+
+
+
+
+# import sys
+# input = sys.stdin.readline
+
+# n = int(input())
+# arr = list(map(int, input().split()))
+
+# prefix = [0 for i in range(n)]
+# prefix[0] = arr[0]
+# mn = 1000000
+# idx = 0
+# mx = arr[0]
+# for i in range(1, n):
+#     prefix[i] = prefix[i - 1] + arr[i]
+    
+#     if mn > prefix[i]:
+#         mn = prefix[i]
+#         idx = i
+        
+#     if mx < prefix[i]:
+#         mx = prefix[i]
+#         print(f'${mx}')
+        
+# print(prefix)
+# print(mn)
+# print(idx)
+
+# if idx != n - 1:
+#     prefix[idx + 1] = arr[idx + 1]
+#     mx2 = mn
+#     for i in range(idx + 2, n):
+#         prefix[i] = prefix[i - 1] + arr[i]
+        
+#         if mx2 < prefix[i]:
+#             mx2 = prefix[i]
+            
+#     print(prefix)
+#     print(max(mx, mx2))
+
+# else:
+#     print(mx)
+
+
+
+
+
+# import sys
+# input = sys.stdin.readline
+
+# n = int(input())
+# arr = list(map(int, input().split()))
+
+# prefix = [0 for i in range(n)]
+# prefix[0] = arr[0]
+# mn = arr[0]
+# idx = 0
+# mx = arr[0]
+# mx3 = arr[0]
+# for i in range(1, n):
+#     prefix[i] = prefix[i - 1] + arr[i]
+    
+#     if mn > prefix[i]:
+#         mn = prefix[i]
+#         idx = i
+        
+#     if mx < prefix[i]:
+#         mx = prefix[i]
+    
+#     if arr[i] > mx3:
+#         mx3 = arr[i]
+        
+# print(prefix)
+# print(f'idx는 {idx}')
+# if idx < n - 2:
+#     prefix[idx + 1] = arr[idx + 1]
+#     mx2 = mn
+#     for i in range(idx + 2, n):
+#         prefix[i] = prefix[i - 1] + arr[i]
+        
+#         if mx2 < prefix[i]:
+#             mx2 = prefix[i]
+            
+#     tmp = max(mx, mx2)
+#     print(max(tmp, mx3))
+
+# elif idx == n - 2:
+#     prefix[idx + 1] = arr[idx + 1]
+
+#     tmp = max(mx, prefix[idx + 1])
+#     print(max(tmp, mx3))
+    
+# elif idx == n - 1:
+#     print(max(mx, mx3))
+    
+# elif idx == 0:
+#     prefix[idx + 1] = arr[idx + 1]
+#     mx2 = mn
+#     for i in range(idx + 2, n):
+#         prefix[i] = prefix[i - 1] + arr[i]
+        
+#         if mx2 < prefix[i]:
+#             mx2 = prefix[i]
+            
+#     tmp = max(mx, mx2)
+#     print(max(tmp, mx3))
+
+'''
+7
+2 -1 3 -2 4 -3 7
+
+'''
+
+
+
+import sys
+input = sys.stdin.readline
 
 n = int(input())
-arr = [0] + list(map(int, input().split()))
+arr = list(map(int, input().split()))
+
+prefix = [0 for i in range(n)]
+prefix[0] = arr[0]
+
+mx = arr[0]
+for i in range(1, n):
+    prefix[i] = max(prefix[i - 1] + arr[i], arr[i])
+    
+    if mx < prefix[i]:
+        mx = prefix[i]
+
+print(mx)
