@@ -25,50 +25,96 @@
 
 '''
 
-from re import L
+# import sys
+# from collections import deque
+# input = sys.stdin.readline
+
+# n = int(input())
+
+# arr = [list(map(int, input().split())) for _ in range(n)]
+
+# v = [[] for _ in range(n)]
+
+# for i in range(n):
+#     for j in range(n):
+#         if arr[i][j] == 1:
+#             v[i].append(j)
+#             v[j].append(i)
+
+# print(v)
+
+
+# def bfs(s):
+#     que = deque()
+
+    
+#     que.append(s)
+#     visited[s] = True
+    
+#     while len(que) > 0:
+#         size = len(que)
+        
+#         for _ in range(size):
+#             cur = que.popleft()
+            
+#             for nxt in v[cur]:
+#                 if visited[nxt]:
+#                     continue
+                
+#                 que.append(nxt)
+#                 visited[nxt] = True
+
+
+# visited = [False for _ in range(n)]
+# for i in range(n):
+#     if v[i] and not visited[i]:
+#         bfs(i)
+
+# print(visited)
+
+
 import sys
 from collections import deque
 input = sys.stdin.readline
 
-n = int(input())
-
-arr = [list(map(int, input().split())) for _ in range(n)]
-
-v = [[] for _ in range(n)]
-
-for i in range(n):
-    for j in range(n):
-        if arr[i][j] == 1:
-            v[i].append(j)
-            v[j].append(i)
-
-print(v)
-
-
 def bfs(s):
     que = deque()
-
     
     que.append(s)
-    visited[s] = True
     
-    while len(que) > 0:
+    while que:
         size = len(que)
         
         for _ in range(size):
             cur = que.popleft()
-            
+
             for nxt in v[cur]:
                 if visited[nxt]:
                     continue
                 
                 que.append(nxt)
                 visited[nxt] = True
+                
 
+n = int(input())
+arr = [list(map(int, input().split())) for _ in range(n)]
+v = [[] for _ in range(n)]
 
-visited = [False for _ in range(n)]
 for i in range(n):
-    if v[i] and not visited[i]:
-        bfs(i)
+    for j in range(n):
+        if arr[i][j] == 1:
+            v[i].append(j)
 
-print(visited)
+
+ans = [[0 for i in range(n)] for j in range(n)]
+for i in range(n):
+    visited = [False for _ in range(n)]
+    if v[i]:
+        bfs(i)
+        
+        for j in range(n):
+            if visited[j]:
+                ans[i][j] = 1
+                
+for i in ans:
+    print(*i)
