@@ -185,4 +185,4 @@ for i in arr:
         print(-1)
         exit()
 
-recur(0)
+recur
