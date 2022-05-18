@@ -62,30 +62,74 @@ abbcaccba
 # print(mx)
 
 
-n = int(input())
-arr = input()
+# n = int(input())
+# arr = input()
 
-m = len(arr)
+# m = len(arr)
 
-tmp = arr[0]
-idx = 0
+# tmp = arr[0]
+# idx = 0
 
-cnt = 0
-total = 0
-ans = 0
-for i in range(1, m):
-    if cnt > n:
-        cnt = 0
-        tmp = arr[i]
-        total -= (i - idx)
-        ans = max(total, ans)
+# cnt = 0
+# total = 0
+# ans = 0
+# for i in range(1, m):
+#     if cnt > n:
+#         cnt = 0
+#         tmp = arr[i]
+#         total -= (i - idx)
+#         ans = max(total, ans)
         
-    if tmp != arr[i]:
-        cnt += 1
-        idx = i
-        tmp = arr[i]
+#     if tmp != arr[i]:
+#         cnt += 1
+#         idx = i
+#         tmp = arr[i]
         
-    elif tmp == arr[i]:
-        total += 1
+#     elif tmp == arr[i]:
+#         total += 1
     
+# print(ans)
+
+
+
+
+import sys
+input = sys.stdin.readline
+
+n = int(input())
+arr = list(map(str, input().rstrip()))
+
+
+s = 0
+e = 0
+cnt = 1
+ans = -10000
+li = [arr[0]]
+tmp = 1
+d = len(arr)
+while s <= e and li and e < d - 1:
+    print(f's는 {s} e는 {e}, tmp는 {tmp}, {li}, ans는 {ans}')
+    if cnt <= n:
+        e += 1
+        if arr[e] not in li:
+            li.append(arr[e])
+            cnt += 1
+            ans = max(ans, tmp)
+            if len(li) <= n:
+                tmp += 1
+            
+        else:
+            e += 1
+            tmp += 1
+            ans = max(ans, tmp)
+            
+    else:
+        li.pop(0)
+        s += 1
+        tmp -= 1
+        cnt -= 1
+        
 print(ans)
+        
+
+
