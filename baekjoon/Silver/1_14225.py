@@ -2,10 +2,10 @@ import sys
 input = sys.stdin.readline
 
 def recur(cur, total):
-    global result
+    global ans
     if cur == n:
         if total > 0:
-            result.append(total)
+            ans[total] += 1
         return
     
     recur(cur + 1, total + arr[cur])
@@ -14,13 +14,11 @@ def recur(cur, total):
 
 n = int(input())
 arr = list(map(int, input().split()))
-result = []
 
+ans = [0 for _ in range(2000010)]
 recur(0, 0)
-result.sort()
 
-m = result[-1] + 1
-for i in range(1, m):
-    if i not in result:
+for i in range(1, 2000010):
+    if not ans[i]:
         print(i)
         break
