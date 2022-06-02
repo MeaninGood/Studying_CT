@@ -63,19 +63,21 @@
 
 
 # 4
-import sys
-input = sys.stdin.readline
+# import sys
+# input = sys.stdin.readline
 
-n = int(input())
-arr = list(map(int, input().split()))
+# n = int(input())
+# arr = list(map(int, input().split()))
 
-ans = [0]
-mn = arr[0]
-mx = 0
+# ans = [0]
+# mn = arr[0]
+# mx = 0
 
-for i in range(1, n):
-    mn = min(mn, arr[i])
-    mx = max(mx, arr[i] - mn)
-    ans.append(mx)
+# for i in range(1, n):
+#     mn = min(mn, arr[i])
+#     mx = max(mx, arr[i] - mn)
+#     ans.append(mx)
     
-print(*ans)
+# print(*ans)
+
+print(2|1)
