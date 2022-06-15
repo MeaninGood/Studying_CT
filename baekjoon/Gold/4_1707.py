@@ -12,6 +12,7 @@ def bfs(cur):
     while que:
         size = len(que)
         cnt += 1
+        
         for _ in range(size):
             cur = que.popleft()
         
@@ -21,6 +22,7 @@ def bfs(cur):
                 
                 if visited[nxt] == -1:
                     que.append(nxt)
+                    
                     if cnt % 2:
                         visited[nxt] = 1
                     
@@ -32,6 +34,7 @@ def bfs(cur):
 T = int(input())
 for tc in range(T):
     n, m = map(int, input().split())
+    
     v = [[] for _ in range(n + 1)]
     for _ in range(m):
         a, b = map(int, input().split())
@@ -45,10 +48,9 @@ for tc in range(T):
         if visited[i] != -1:
             continue
             
-        tmp = bfs(i)
+        flag = bfs(i)
         
-        if not tmp:
-            flag = False
+        if not flag:
             break
             
     if flag:
