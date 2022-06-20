@@ -38,7 +38,6 @@ def solution(fees, records):
 
     for i in range(len(idx)):
         answer.append(d2[idx[i]])
-
             
     return answer
 
