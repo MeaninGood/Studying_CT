@@ -93,43 +93,108 @@ abbcaccba
 
 
 
+# import sys
+# input = sys.stdin.readline
+
+# n = int(input())
+# arr = list(map(str, input().rstrip()))
+
+
+# s = 0
+# e = 0
+# cnt = 1
+# ans = -10000
+# li = [arr[0]]
+# tmp = 1
+# d = len(arr)
+# while s <= e and li and e < d - 1:
+#     print(f's는 {s} e는 {e}, tmp는 {tmp}, {li}, ans는 {ans}')
+#     if cnt <= n:
+#         e += 1
+#         if arr[e] not in li:
+#             li.append(arr[e])
+#             cnt += 1
+#             ans = max(ans, tmp)
+#             if len(li) <= n:
+#                 tmp += 1
+            
+#         else:
+#             e += 1
+#             tmp += 1
+#             ans = max(ans, tmp)
+            
+#     else:
+#         li.pop(0)
+#         s += 1
+#         tmp -= 1
+#         cnt -= 1
+        
+# print(ans)
+  
+    
+        
+
+'''
+시간초과
+
+
+
 import sys
 input = sys.stdin.readline
 
 n = int(input())
-arr = list(map(str, input().rstrip()))
+arr = input().strip()
 
-
-s = 0
 e = 0
-cnt = 1
-ans = -10000
-li = [arr[0]]
-tmp = 1
-d = len(arr)
-while s <= e and li and e < d - 1:
-    print(f's는 {s} e는 {e}, tmp는 {tmp}, {li}, ans는 {ans}')
-    if cnt <= n:
+tmp = []
+tmp2 = set()
+cnt = 0
+mx = 0
+while e < len(arr) - 1:
+    tmp2 = set(tmp)
+    
+    if len(tmp2) <= n:
         e += 1
-        if arr[e] not in li:
-            li.append(arr[e])
-            cnt += 1
-            ans = max(ans, tmp)
-            if len(li) <= n:
-                tmp += 1
-            
-        else:
-            e += 1
-            tmp += 1
-            ans = max(ans, tmp)
-            
+        tmp.append(arr[e])
+        cnt += 1
+        
     else:
-        li.pop(0)
-        s += 1
-        tmp -= 1
+        tmp.pop(0)
         cnt -= 1
+        mx = max(mx, cnt)
         
-print(ans)
-        
+print(mx)
+
+'''
 
 
+# import sys
+# input = sys.stdin.readline
+
+# n = int(input())
+# arr = input().strip()
+
+# s = 0
+# e = 0
+# d = {arr[0]: 1}
+# cnt = 0
+# mx = 0
+
+# while s <= e and e < len(arr) - 1:
+    
+#     if len(d) > n:
+#         d[arr[s]] -= 1
+        
+#         if d[arr[s]] == 0:
+#             del d[arr[s]]
+        
+#         s += 1
+
+#     else:
+#         e += 1
+#         d[arr[e]] = d.get(arr[e], 0) + 1
+        
+#         if len(d) <= n:
+#             mx = max(mx, sum(d.values()))
+        
+# print(mx)

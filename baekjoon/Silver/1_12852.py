@@ -21,9 +21,6 @@
 
 '''
 
-import sys
-input = sys.stdin.readline
-
 # n = int(input())
 # dp = [-1 for i in range(20)]
 # dp[1] = 0
@@ -91,38 +88,109 @@ input = sys.stdin.readline
 
 
 
+# import sys
+# input = sys.stdin.readline
+
+# n = int(input())
+
+# if n == 1:
+#     print(0, 1, sep='\n')
+#     exit()
+
+# dp = [[0] for _ in range(n + 1)]
+# for i in range(2, n + 1):
+#     dist = 1000000
+#     idx = 0
+#     if i >= 1 and dp[i - 1][0] + 1 < dist:
+#         idx = i - 1
+#         dist = dp[idx][0] + 1
+        
+#     if not i % 2 and dp[i // 2][0] + 1 < dist:
+#         idx = i // 2
+#         dist = dp[idx][0] + 1
+        
+#     if not i % 3 and dp[i // 3][0] + 1 < dist:
+#         idx = i // 3
+#         dist = dp[idx][0] + 1
+        
+#     dp[i][0] = dist
+#     dp[i].append(idx)
+
+
+# ans = [n]
+# cnt = dp[n][0]
+# nxt = dp[n][1]
+# for _ in range(cnt - 1):
+#     ans.append(nxt)
+#     next = dp[nxt][1]
+    
+# print(cnt)
+# print(*ans, 1)
+
+
+
+
+import sys
+input = sys.stdin.readline
+
 n = int(input())
-
-if n == 1:
-    print(0, 1, sep='\n')
-    exit()
-
-dp = [[0] for _ in range(n + 1)]
-for i in range(2, n + 1):
-    dist = 1000000
-    idx = 0
-    if i >= 1 and dp[i - 1][0] + 1 < dist:
-        idx = i - 1
-        dist = dp[idx][0] + 1
-        
-    if not i % 2 and dp[i // 2][0] + 1 < dist:
-        idx = i // 2
-        dist = dp[idx][0] + 1
-        
-    if not i % 3 and dp[i // 3][0] + 1 < dist:
-        idx = i // 3
-        dist = dp[idx][0] + 1
-        
-    dp[i][0] = dist
-    dp[i].append(idx)
-
+dp = [-1 for i in range(1000010)]
+dp[1] = 0
+dp[2] = 1
+dp[3] = 1
+dp[4] = 2
+dp[5] = 3
+dp[6] = 2
 
 ans = [n]
-cnt = dp[n][0]
-nxt = dp[n][1]
-for _ in range(cnt - 1):
-    ans.append(nxt)
-    next = dp[nxt][1]
+if n > 6:
+    for i in range(6, n + 1):
+        if i % 6 == 0:
+            dp[i] = min(dp[i // 3] + 1, dp[i // 2] + 1)
+            
+        elif i % 3 == 0:
+            dp[i] = min(dp[i // 3] + 1, dp[i - 1] + 1)
+            
+        elif i % 2 == 0:
+            dp[i] = min(dp[i // 2] + 1, dp[i - 1] + 1)
+
+        else:
+            dp[i] = dp[i - 1] + 1
+    print(dp[n])
+else:
+    print(dp[n])
+
+ans = [n]
+tmp = n
+while 1:
+    if tmp == 1:
+        break
     
-print(cnt)
-print(*ans, 1)
+    if tmp % 6 == 0:
+        if dp[tmp // 3] + 1 <= dp[tmp // 2] + 1:
+            ans.append(tmp // 3)
+            tmp //= 3
+        else:
+            ans.append(tmp // 2)
+            tmp //= 2
+            
+    elif tmp % 3 == 0:
+        if dp[tmp // 3] + 1 <= dp[tmp - 1] + 1:
+            ans.append(tmp // 3)
+            tmp //= 3
+        else:
+            ans.append(tmp - 1)
+            tmp -= 1
+            
+    elif tmp % 2 == 0:
+        if dp[tmp // 2] + 1 <= dp[tmp - 1] + 1:
+            ans.append(tmp // 2)
+            tmp //= 2
+        else:
+            ans.append(tmp - 1)
+            tmp -= 1
+            
+    else:
+        ans.append(tmp - 1)
+        tmp -= 1
+print(*ans)

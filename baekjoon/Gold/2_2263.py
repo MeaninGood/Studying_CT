@@ -28,6 +28,8 @@ ABDCEFG
 
 '''
 
+import sys
+input = sys.stdin.readline
 
 n = int(input())
 inodr = list(map(int, input().split()))

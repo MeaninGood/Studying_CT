@@ -144,29 +144,57 @@
 
 
 
-import sys
-si = sys.stdin.readline
-sys.setrecursionlimit(10000)
+# import sys
+# si = sys.stdin.readline
+# sys.setrecursionlimit(10000)
 
-def recur(cur):
-    if cur >= n - 1:
-        return -10000000
+# def recur(cur):
+#     if cur >= n - 1:
+#         return -10000000
     
-    ret = 1
-    for i in range(cur):
-        if arr[cur - 1] < arr[cur]:
-            ret = max(ret, recur(cur + 1) + 1)
+#     ret = 1
+#     for i in range(cur):
+#         if arr[cur - 1] < arr[cur]:
+#             ret = max(ret, recur(cur + 1) + 1)
             
-    return ret
+#     return ret
         
     
 
-n = int(si())
-arr = list(map(int, si().split()))
+# n = int(si())
+# arr = list(map(int, si().split()))
 
-mx = -10000000
-for i in range(1, n):
-    mx = max(mx, recur(i))
+# mx = -10000000
+# for i in range(1, n):
+#     mx = max(mx, recur(i))
     
-print(mx)
+# print(mx)
 
+
+
+import sys
+input = sys.stdin.readline
+
+n = int(input())
+arr = list(map(int, input().split()))
+
+dp = [1 for _ in range(1010)]
+dp2 = [1 for _ in range(1010)]
+
+for i in range(n):
+    for j in range(i):
+        if arr[i] > arr[j]:
+            dp[i] = max(dp[i], dp[j] + 1)
+
+arr2 = arr[::-1]
+for i in range(n):
+    for j in range(i):
+        if arr2[i] > arr2[j]:
+            dp2[i] = max(dp2[i], dp2[j] + 1)
+
+ans = 0
+dp3 = dp2[:n][::-1]
+for i in range(n):
+    ans = max(ans, dp[i] + dp3[i])
+    
+print(ans - 1)
