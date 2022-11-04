@@ -47,5 +47,6 @@ v = set(map(find_, map(int, input().split())))
 
 if len(v) == 1:
     print('YES')
+    
 else:
     print('NO')
