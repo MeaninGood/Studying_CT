@@ -84,63 +84,65 @@
 
 
 
-import sys
-from collections import deque
-input = sys.stdin.readline
+# import sys
+# from collections import deque
+# input = sys.stdin.readline
 
 
-def in_range(x, y):
-    return 0 <= x < n and 0 <= y < m
+# def in_range(x, y):
+#     return 0 <= x < n and 0 <= y < m
 
-dx = [0, 1, 0, -1]
-dy = [1, 0, -1, 0]
+# dx = [0, 1, 0, -1]
+# dy = [1, 0, -1, 0]
 
-def bfs(x, y):
-    que = deque()
-    visited = [[False for i in range(m)] for j in range(n)]
+# def bfs(x, y):
+#     que = deque()
+#     visited = [[False for i in range(m)] for j in range(n)]
     
-    # if dp[x][y] != -1:
-    #     return dp[x][y]
+#     # if dp[x][y] != -1:
+#     #     return dp[x][y]
     
-    que.append([x, y])
-    visited[x][y] = True
+#     que.append([x, y])
+#     visited[x][y] = True
     
-    ret = 0
-    while que:
-        size = len(que)
+#     ret = 0
+#     while que:
+#         size = len(que)
         
-        for _ in range(size):
-            x, y = que.popleft()
-            ret += 1
+#         for _ in range(size):
+#             x, y = que.popleft()
+#             ret += 1
             
-            # if dp[x][y] != -1:
-            #     return dp[x][y]
+#             # if dp[x][y] != -1:
+#             #     return dp[x][y]
              
-            for d in range(4):
-                nx = x + dx[d]
-                ny = y + dy[d]
+#             for d in range(4):
+#                 nx = x + dx[d]
+#                 ny = y + dy[d]
                 
-                if not in_range(nx, ny) or visited[nx][ny] or arr[nx][ny] != 0:
-                    continue
+#                 if not in_range(nx, ny) or visited[nx][ny] or arr[nx][ny] != 0:
+#                     continue
                 
-                que.append([nx, ny])
-                visited[nx][ny] = True
-        # dp[x][y] = ret
-    return ret
+#                 que.append([nx, ny])
+#                 visited[nx][ny] = True
+#         # dp[x][y] = ret
+#     return ret
                 
 
-n, m = map(int, input().split())
-arr = [list(map(int, input().rstrip())) for _ in range(n)]
-dp = [[-1 for i in range(m)] for j in range(n)]
+# n, m = map(int, input().split())
+# arr = [list(map(int, input().rstrip())) for _ in range(n)]
+# dp = [[-1 for i in range(m)] for j in range(n)]
 
 
-for i in range(n):
-    for j in range(m):
-        if arr[i][j] == 1:
-            arr[i][j] = bfs(i, j)
+# for i in range(n):
+#     for j in range(m):
+#         if arr[i][j] == 1:
+#             arr[i][j] = bfs(i, j)
     
-for i in arr:
-    print(*i, sep='')
+# for i in arr:
+#     for j in i:
+#         print(j % 10, end='')
+#     print()
 
 
 # import sys
@@ -181,3 +183,171 @@ for i in arr:
 #             arr[i][j] = dfs(i, j)
 # for i in arr:
 #     print(*i, sep='')
+
+
+
+# import sys
+# from collections import deque
+# input = sys.stdin.readline
+
+# def in_range(x, y):
+#     return 0 <= x < n and 0 <= y < m
+
+# dx = [0, 1, 0, -1]
+# dy = [1, 0, -1, 0]
+
+# def bfs(x, y):
+#     que = deque()
+#     visited = [[False for i in range(m)] for j in range(n)]
+    
+#     que.append([x, y])
+#     visited[x][y] = True
+    
+#     ret = 0
+#     while que:
+#         size = len(que)
+        
+#         for _ in range(size):
+#             x, y = que.popleft()
+            
+#             for d in range(4):
+#                 nx = x + dx[d]
+#                 ny = y + dy[d]
+                
+#                 if not in_range(nx, ny) or visited[nx][ny] or arr[nx][ny] != 0:
+#                     continue
+                
+#                 que.append([nx, ny])
+#                 visited[nx][ny] = True
+                
+#             ret += 1
+
+#     return ret % 10
+    
+    
+
+# n, m = map(int, input().split())
+# arr = [list(map(int, input().strip())) for _ in range(n)]
+# dp = [[-1 for i in range(m)] for j in range(n)]
+
+# for i in range(n):
+#     for j in range(m):
+#         if arr[i][j] == 1:
+#             arr[i][j] = bfs(i, j)
+#         print(arr[i][j], end='')
+#     print()
+
+
+
+# import sys
+# from pprint import pprint
+# input = sys.stdin.readline
+
+# dx = [0, 1, 0, -1]
+# dy = [1, 0, -1, 0]
+# def dfs(x, y):
+#     visited[x][y] = True
+#     dict_[cnt].append([x, y])
+    
+#     ret = 1
+#     for d in range(4):
+#         nx = x + dx[d]
+#         ny = y + dy[d]
+        
+#         if not (0 <= nx < n and 0 <= ny < m) or arr[nx][ny] != 0:
+#             continue
+        
+#         if visited[nx][ny] and dp[nx][ny] != -1:
+#             return dp[nx][ny]
+        
+#         if not visited[nx][ny]:
+#             ret += dfs(nx, ny)
+#             dp[nx][ny] = ret
+
+#     return ret
+
+
+
+# n, m = map(int, input().split())
+# arr = [list(map(int, input().strip())) for _ in range(n)]
+# visited = [[False for i in range(m)] for j in range(n)]
+# dp = [[-1 for i in range(m)] for  j in range(n)]
+
+# dict_ = {}
+# cnt = 0
+# for i in range(n):
+#     for j in range(m):
+#         if arr[i][j] == 0 and not visited[i][j]:
+#             dict_[cnt] = dict_.get(cnt, [])
+#             dp[i][j] = dfs(i, j)
+#             cnt += 1
+
+# print(dict_)
+# for i in range(n):
+#     for j in range(m):
+#         if arr[i][j] == 1:
+#             for k in range(4):
+#                 ni = i + dx[k]
+#                 nj = j + dy[k]
+                
+#                 if not (0 <= ni < n and 0 <= nj < m) or arr[ni][nj] != 0 or dp[ni][nj] == -1:
+#                     continue
+                
+#                 arr[i][j] += dp[ni][nj]
+#         print(arr[i][j], end='')
+#     print()
+    
+# pprint(dp)
+
+
+
+
+import sys
+input = sys.stdin.readline
+sys.setrecursionlimit(100010)
+
+dx = [0, 1, 0, -1]
+dy = [1, 0, -1, 0]
+def dfs(x, y):
+    visited[x][y] = cnt
+    
+    ret = 1
+    for d in range(4):
+        nx = x + dx[d]
+        ny = y + dy[d]
+        
+        if not (0 <= nx < n and 0 <= ny < m) or (visited[nx][ny] != -1) or arr[nx][ny] != 0:
+            continue
+        
+        ret += dfs(nx, ny)
+
+    return ret
+
+
+n, m = map(int, input().split())
+arr = [list(map(int, input().strip())) for _ in range(n)]
+visited = [[-1 for i in range(m)] for j in range(n)]
+
+dict_ = {}
+cnt = 1
+for i in range(n):
+    for j in range(m):
+        if (arr[i][j] == 0) and (visited[i][j] == -1):
+            dict_[cnt] = dfs(i, j)
+            cnt += 1
+
+for i in range(n):
+    for j in range(m):
+        if arr[i][j] == 1:
+            check = []
+            for k in range(4):
+                ni = i + dx[k]
+                nj = j + dy[k]
+                
+                if not (0 <= ni < n and 0 <= nj < m) or arr[ni][nj] != 0 or (visited[ni][nj] in check):
+                    continue
+                
+                check.append(visited[ni][nj])
+                arr[i][j] += dict_[visited[ni][nj]]
+        print(arr[i][j] % 10, end='')
+    print()

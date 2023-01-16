@@ -39,62 +39,131 @@
 
 '''
 
+# import sys
+# import heapq
+# si = sys.stdin.readline
+
+# def in_range(x, y):
+#     return 0 <= x < n and 0 <= y < m
+
+# dx = [0, 1, 0, -1]
+# dy = [1, 0, -1, 0]
+
+# def get_dist(x, y, arr):
+#     pq = []
+#     dist[x][y] = arr[x][y]
+    
+#     heapq.heappush(pq, (arr[x][y], x, y))
+#     # ret = 1
+#     while len(pq) > 0:
+#         d, x, y = heapq.heappop(pq)
+        
+#         for i in range(4):
+#             nx = x + dx[i]
+#             ny = y + dy[i]
+            
+#             if not in_range(nx, ny):
+#                 continue 
+            
+#             nd = dist[x][y] + arr[nx][ny]
+            
+#             if dist[nx][ny] > nd:
+#                 dist[nx][ny] = nd
+#                 heapq.heappush(pq, (nd, nx, ny))
+        
+#     #     ret += 1
+#     # return ret
+            
+    
+
+# n, m = map(int, si().split())
+# arr = [list(map(int, si().split())) for _ in range(n)]
+# dist = [[1000000000 for _ in range(m + 1)] for j in range(n + 1)]
+
+# get_dist(0, 0, arr)
+
+
+
+# mx = 0
+# for i in range(n):
+#     for j in range(m):
+#         if dist[i][j] > mx:
+#             mx = dist[i][j]
+# else:  
+#     cnt = 0
+#     for i in range(n):
+#         for j in range(m):
+#             if dist[i][j] == mx and arr[i][j] == 1:
+#                 cnt += 1
+                
+#     print(mx)
+#     print(cnt)
+
+
+
 import sys
 import heapq
-si = sys.stdin.readline
+from pprint import pprint
+input = lambda : sys.stdin.readline().strip()
+
 
 def in_range(x, y):
     return 0 <= x < n and 0 <= y < m
 
 dx = [0, 1, 0, -1]
 dy = [1, 0, -1, 0]
-
-def get_dist(x, y, arr):
+def get_dist(x, y):
     pq = []
     dist[x][y] = arr[x][y]
-    
-    heapq.heappush(pq, (arr[x][y], x, y))
-    # ret = 1
-    while len(pq) > 0:
+
+    heapq.heappush(pq, [arr[x][y], x, y])
+    ret = 0
+    while pq:
         d, x, y = heapq.heappop(pq)
-        
+
+        if dist[x][y] != d:
+            continue
+
         for i in range(4):
             nx = x + dx[i]
             ny = y + dy[i]
-            
+
             if not in_range(nx, ny):
-                continue 
-            
-            nd = dist[x][y] + arr[nx][ny]
-            
+                continue
+
+            nd = d + arr[nx][ny]
+
             if dist[nx][ny] > nd:
                 dist[nx][ny] = nd
-                heapq.heappush(pq, (nd, nx, ny))
-        
-    #     ret += 1
-    # return ret
-            
-    
+                heapq.heappush(pq, [nd, nx, ny])
 
-n, m = map(int, si().split())
-arr = [list(map(int, si().split())) for _ in range(n)]
-dist = [[1000000000 for _ in range(m + 1)] for j in range(n + 1)]
+        ret += 1
 
-get_dist(0, 0, arr)
+    return ret
+                
 
 
+
+n, m = map(int, input().split())
+arr = [list(map(int, input().split())) for _ in range(n)]
+dist = [[1 << 31 for i in range(m)] for j in range(n)]
+
+get_dist(0, 0)
 
 mx = 0
 for i in range(n):
     for j in range(m):
         if dist[i][j] > mx:
             mx = dist[i][j]
-else:  
-    cnt = 0
-    for i in range(n):
-        for j in range(m):
-            if dist[i][j] == mx and arr[i][j] == 1:
-                cnt += 1
-                
-    print(mx)
-    print(cnt)
+
+
+cnt = 0
+for i in range(n):
+    for j in range(m):
+        if dist[i][j] == mx and arr[i][j] == 1:
+            cnt += 1
+
+print(mx)
+print(cnt)
+
+pprint(dist)
