@@ -56,7 +56,10 @@ elif res2 != -1:
 
 else:
     print(-1)
-print(min(res1, res2) if res1 or res2 else -1)
+
+
+    
+# print(min(res1, res2) if res1 or res2 else -1)
 
 
 # cnts = {0 : False, 1 : False}
