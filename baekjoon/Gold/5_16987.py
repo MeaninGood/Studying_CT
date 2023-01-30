@@ -9,7 +9,6 @@ calc = [
 ]
 
 
-
 def check(x):
     x = x.replace(' ', '')
     return eval(x)
@@ -28,7 +27,6 @@ def recur(cur, tmp):
         recur(cur + 1, tmp)
         tmp = tmp[:-2]
         
-
 
 T = int(input())
 for tc in range(T):
