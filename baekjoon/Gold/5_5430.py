@@ -25,16 +25,9 @@ for tc in range(T):
                 rdcnt += 1
         
     else:
-        # tmp = []
-        # for i in range(ldcnt, n - rdcnt):
-        #     tmp.append(arr[i])
-
-        # tmp = tmp[::-1] if rev else tmp
-        # print('[' + ','.join(map(str, tmp)) + ']')
-        tmp = ''
+        tmp = []
         for i in range(ldcnt, n - rdcnt):
-            tmp += str(arr[i])
-            tmp += ','
+            tmp.append(arr[i])
 
-        tmp = tmp[:-1] if not rev else tmp[:-1][::-1]
-        tmp = '[' + tmp + ']'
+        tmp = tmp[::-1] if rev else tmp
+        print('[' + ','.join(map(str, tmp)) + ']')
