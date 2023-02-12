@@ -32,4 +32,4 @@ for i in range(n):
     arr = list(input().split())
     trie.insert(arr[1:])
     
-trie.print_node(0)        
+trie.print_node(0) 
