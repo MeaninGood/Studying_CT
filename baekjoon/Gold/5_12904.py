@@ -21,4 +21,3 @@ for i in range(m):
         arr2 = arr2[:-1]
         arr2 = arr2[::-1]
         
-    print(arr2)
