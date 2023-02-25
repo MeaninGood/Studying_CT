@@ -38,24 +38,24 @@ def in_range(x, y):
 
 dx = [-1, -1, -1, 0, 0, 1, 1, 1]
 dy = [-1, 0, 1, -1, 1, -1, 0, 1]
-def bfs(x, y):
-    visited = [[False for _ in range(4)] for _ in range(4)]
-    que = deque()
-    
+visited = [[False for i in range(4)] for j in range(4)]
+def dfs(x, y, tmp):
+    global idx
     visited[x][y] = True
-    que.append([x, y])
-    
-    while que:
-        size = len(que)
-        
-        for _ in range(size):
-            x, y = que.popleft()
-            
-            for i in range(8):
-                nx = x + dx[i]
-                ny = y + dy[i]
-                
-                if not in_range(nx, ny) or not trie.search
+
+    if len(tmp) == 16:
+        idx.add(tmp)
+        return
+
+    for i in range(8):
+        nx = x + dx[i] 
+        ny = y + dy[i]
+
+        if not in_range(nx, ny) or visited[nx][ny]:
+            continue
+
+        dfs(nx, ny, tmp+arr[nx][ny])
+        visited[nx][ny] = False
 
 trie = Trie()
 n = int(input())
@@ -66,6 +66,9 @@ for _ in range(n):
 x = input()
 m = int(input())
 for _ in range(m):
+    idx = set()
     arr = [list(input()) for _ in range(4)]
     
     x = input()
+    dfs(0, 0, arr[0][0])
+    print(idx)
