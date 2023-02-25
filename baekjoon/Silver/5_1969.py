@@ -10,9 +10,6 @@ for i in range(n):
     for j in range(m):
         d[j][arr[i][j]] = d[j].get(arr[i][j], 0) + 1
 
-print(arr)
-print(d)
-
 total = n * m
 answer =  ''
 for i in range(m):
