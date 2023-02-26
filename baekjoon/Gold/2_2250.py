@@ -43,9 +43,8 @@ for _ in range(n):
 
 
 # 루트 노드 찾기
-print(parent)
-
-# preorder(root)
+root = parent[1:].index(-1) + 1
+preorder(root)
 
 ans = [-1, -1] # 너비가 가장 넓은 레벨, 너비
 for level in sorted(width_d.keys()):
