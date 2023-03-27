@@ -197,3 +197,162 @@ recur(0, 0, 1, 0)
 # 퇴사는 쉬우니까 그냥 푸는 걸로
 
 
+# 소문난 칠공주
+# 2번은 bfs, dfs 알아야 하기 때문에 2번 빼고 알려줌
+
+"""
+YYYYY   SYSYS   YYYYY   YSYYS   YYYYY
+가로세로 인접한다는 신경 안 씀
+일차원으로 봐도 됨
+아까랑 똑같다는 뜻
+저 조건을 만족하는 애들이 몇 개 있는지는 check함수로 구현
+모든 케이스를 다 보기만 하면 됨
+잘못 연결했다 싶으면 그때 나가면 됨.
+"""
+
+arr = [input() for i in range(5)]
+
+
+def check():
+    pass
+    # 조건 다 만족하는지 check로 구현하면 됨
+    
+
+# 4번 템플릿
+def recur(x, y, cnt, scnt):
+    
+    # if y != 4:
+    #     recur(x, y + 1, cnt + 1)
+    #     recur(x, y + 1, cnt)
+
+    # else:
+    #     recur(x + 1, 0, cnt + 1)
+    #     recur(x, y + 1, cnt)
+    
+    if cnt == 7:
+        # if scnt < 4:
+            # return
+        
+        check()
+        return
+    
+    if y == 5:
+        x += 1
+        y = 0
+    
+    if x == 5:
+        return
+    
+    # 자바 안 되고 C, C++, 파이썬은 됨
+    recur(x, y + 1, cnt + 1, scnt + (arr[x][y] == 'S'))
+    recur(x, y + 1, cnt, scnt)
+    
+recur(0, 0, 0, 0)
+
+
+
+# 이차원은 3번 템플릿은 까다로운 경우가 많음
+# 그래서 이렇게 이차원으로 풀어야 한다
+
+
+
+# 스도쿠
+arr = [input() for i in range(9)]
+
+
+def rect_check(x, y):
+    visited = [False for i in range(10)]
+    
+    for i in range(x + 3):
+        for j in range(y + 3):
+            if arr[i][j] == '0':
+                continue
+            
+            if visited[int(arr[i][j])]:
+                return False
+            visited[int(arr[i][j])] = True   
+
+def check():
+    # 각 줄마다 중복된 게 있냐 없냐, 카운팅배열
+    # 가로줄
+    for i in range(9):
+        visited = [False for _ in range(10)]
+        
+        for j in range(9):
+            if arr[i][j] == '0':
+                continue
+            
+            if visited[int(arr[i][j])]:
+                return False
+            
+            visited[int(arr[i][j])] = True
+            
+    # 세로줄, i j만 바꾸면 된다
+    for i in range(9):
+        visited = [False for _ in range(10)]
+    
+        for j in range(9):
+            if arr[j][i] == '0':
+                continue
+            
+            if visited[int(arr[j][i])]:
+                return False
+            
+            visited[int(arr[j][i])] = True
+            
+    # 3x3 사각형 체크
+    for i in range(3):
+        for j in range(3):
+            # 한 칸 체크에 이중포문 써야 하는데..
+            if not rect_check(3 * i, 3 * j):
+                return False
+            
+    return True
+
+
+            
+            
+
+def recur(x, y):
+    # 우리는 가지치기 배웠으니까
+    if check():
+        return
+    
+    if y == 9:
+        x += 1
+        y = 0
+        
+        # if x == 9:
+        #     check()
+        #     return
+        
+        if x == 9:
+            for i in range(9):
+                print(*arr[i])
+            exit()
+        
+    if arr[x][y] != '0':
+        recur(x, y + 1) # 그냥 다음칸으로
+        
+    # 0이면 1~9 다 넣어봄
+    else:
+        for i in range(1, 10):
+            arr[x][y] = str(i)
+            recur(x, y + 1)
+            arr[x][y] = '0'
+            
+recur(0, 0)
+
+
+
+## 시간복잡도
+"""
+1번 템플릿 : 하나의 함수에서 m개 호출 +  n중 중첩 => m^n
+m의 n승 - 아무 가지치기가 없다라고 가정하면
+2번템플릿 : nPm
+3번 템플릿 : nCm
+
+# 가지치기가 들어가면 시간복잡도 계산 따로해야 함
+for문 들어가면 n * m^n
+
+"""
