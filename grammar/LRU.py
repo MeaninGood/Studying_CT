@@ -25,3 +25,4 @@ for ref in reference:
     else:                               # 이미 ref이 cache 안에 있을 때
         cache.pop(cache.index(ref))     # 길이는 상관 없고 제일 오래 있었던 애 지워줌
         cache.append(ref)               # 새로 추가해 줌
+
