@@ -1,40 +1,29 @@
-di = [-1, -1]
-dj = [-1, 1]
+n = int(input())
+visited = [False for i in range(n)]
+visited2 = [False for i in range(3*n)]
+visited3 = [False for i in range(3*n)]
 
-def check(x, y):
-    for j in range(2):
-        nx, ny = x, y
-        while True:
-            nx += di[j]
-            ny += dj[j]
-            if nx < 0 or ny >= N or ny < 0:
-                break
-            if arr[nx][ny]:
-                return False
-    return True
+answer = 0
 
+def recur(cur):
+    global answer
 
-def n_queen(cnt):
-    global global_cnt
-    if cnt == N:
-        global_cnt += 1
+    if cur == n:
+        answer += 1
         return
-    for i in range(N):
-        if visited[i] == 0 and check(cnt, i):
-            arr[cnt][i] = 1
-            visited[i] = 1
-            n_queen(cnt + 1)
-            arr[cnt][i] = 0
-            visited[i] = 0
-    return
 
+    for i in range(n):
+        if visited[i] or visited2[cur + i] or visited3[cur - i + n]:
+            continue
 
+        visited[i] = True
+        visited2[cur + i] = True
+        visited3[cur - i + n] = True
+        recur(cur + 1)
+        visited[i] = False
+        visited2[cur + i] = False
+        visited3[cur - i + n] = False
 
-N = int(input())
-arr = [[0 for _ in range(N)] for _ in range(N)]
-visited = [0 for _ in range(N)]
-global_cnt = 0
+recur(0)
 
-
-n_queen(0)
-print(global_cnt)
+print(answer)
