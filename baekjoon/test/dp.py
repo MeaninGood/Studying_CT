@@ -1,6 +1,7 @@
 n = int(input())
 arr = [list(map(int, input().split())) for _ in range(n)]
 
+
 # 퇴사
 
 ans = 0
