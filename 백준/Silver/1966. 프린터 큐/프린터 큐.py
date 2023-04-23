@@ -1,4 +1,6 @@
 from collections import deque
+import sys
+input = lambda : sys.stdin.readline().strip()
 
 
 T = int(input())
