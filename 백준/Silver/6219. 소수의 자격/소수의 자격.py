@@ -14,7 +14,7 @@ for i in range(2, b + 1):
         
 cnt = 0
 for i in range(a, b + 1):
-    if str(d) in str(i) and sieve[i] == True:
+    if str(d) in str(i) and sieve[i]:
         cnt += 1
         
 print(cnt)
