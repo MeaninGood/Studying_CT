@@ -1,21 +1,20 @@
 import sys
-input = sys.stdin.readline
+input = lambda : sys.stdin.readline().strip()
 
-T = int(input())
-for tc in range(T):
-    arr = list(map(int, input().split()))
+n = int(input())
+for _ in range(n):
+    arr = list(map(int, input().split(' ')))
     arr.sort(reverse=True)
     
-    d = len(arr)
-    mx = -1 << 20
-    for i in range(d):
-        for j in range(i + 1, d):
+    m = len(arr)
+    mx = -1 << 31
+    for i in range(m):
+        for j in range(i + 1, m):
             a, b = arr[i], arr[j]
             
             while a % b != 0:
                 a, b = b, a % b
-            
+                
             mx = max(mx, b)
-
+            
     print(mx)
-    
