@@ -17,15 +17,13 @@ ans = 1 << 31
 while e < n + 1:
     if cnt >= k:
         ans = min(ans, length)
-        
-    if cnt <= k:
-        e += 1
-        length += arr[e]
-        cnt += 1
-        
-    else:
         length -= arr[s]
         s += 1
         cnt -= 1
+        
+    else:
+        e += 1
+        length += arr[e]
+        cnt += 1
         
 print(ans)
