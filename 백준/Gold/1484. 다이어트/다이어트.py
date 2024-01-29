@@ -11,8 +11,7 @@ while s <= e and e < 100001:
     if total == n:
         ans.append(e)
         s += 1
-        s += 1
-        
+
     elif total > n:
         s += 1
         
