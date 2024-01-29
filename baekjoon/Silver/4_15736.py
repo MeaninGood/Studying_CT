@@ -1,11 +1,14 @@
-# import sys
+# 제곱수가 몇 개 있는지 찾기
+import sys
 
-# input = lambda: sys.stdin.readline().strip()
+input = lambda: sys.stdin.readline().strip()
 
-# n = int(input())
+n = int(input())
+cnt = 1
+for i in range(2, n + 1):
+    if i * i > n:
+        break
 
-# ans = 1
-# for i in range(3, n + 1):
-#     cnt = 0
+    cnt += 1
 
-#     for j in
+print(cnt)
