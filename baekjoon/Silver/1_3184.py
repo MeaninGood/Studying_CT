@@ -1,5 +1,6 @@
 import sys
 from collections import deque
+
 input = lambda : sys.stdin.readline().strip()
 
 def in_range(x, y):
@@ -22,7 +23,8 @@ def bfs(x, y):
                 nx = x + dx[d]
                 ny = y + dy[d]
                 
-                if not in_range(nx, ny) or visited
+                if not in_range(nx, ny) or visited:
+                    pass
     
 
 n, m = map(int, input().split())
