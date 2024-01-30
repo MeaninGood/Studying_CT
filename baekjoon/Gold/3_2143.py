@@ -25,5 +25,5 @@ for i in range(1, m):
     for j in range(i):
         tmp = prefixb[i] - prefixb[j]
         ans += d.get(k - tmp, 0)
-print(d)
+        
 print(ans)
