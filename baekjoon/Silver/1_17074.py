@@ -3,19 +3,20 @@ import sys
 input = lambda: sys.stdin.readline().strip()
 
 n = int(input())
-arr = [0] + list(map(int, input().split()))
+arr = [-1 << 31] + list(map(int, input().split())) + [1 << 31]
 
-visited = [True for _ in range(n + 1)]
+idx, cnt = 0, 0
 for i in range(1, n + 1):
-    if arr[i] < arr[i - 1]:
-        visited[i] = False
-    
-ans = 0
-for i in range(1, n + 1):
-    if not visited[i]:
-        ans += 1
-        continue
-    
-    if visited[i - 1] and visited[i + 1] and arr[i - 1] <= arr[i + 1]:
-        pass
-print(visited)
+    if arr[i - 1] > arr[i]:
+        idx = i
+        cnt += 1
+        
+    if cnt >= 2:
+        print(0)
+        exit()
+
+
+if cnt == 0:
+    print(n)
+else:
+    print((arr[idx - 2] <= arr[idx]) + (arr[idx - 1] <= arr[idx + 1]))
