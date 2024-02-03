@@ -1,21 +1,22 @@
 import sys
-si = sys.stdin.readline
+
+input = lambda: sys.stdin.readline().strip()
+
+n = int(input())
+arr = [list(map(int, input().split())) for _ in range(n)]
+
 
 def check(x):
     total = 0
-    for i in range(n):
-        if x >= arr[i][0]:
-            total += ((min(arr[i][1], x) - arr[i][0]) // arr[i][2]) + 1
-        
+    for a, c, b in arr:
+        if x >= a:
+            total += ((min(c, x) - a) // b) + 1
+    
     return total
 
 
-n = int(si())
-arr = [list(map(int, si().split())) for _ in range(n)]
-
 ans = 0
-s = 0
-e = 10000000000
+s, e = 0, 1 << 31
 flag = False
 while s <= e:
     mid = (s + e) // 2
@@ -24,10 +25,10 @@ while s <= e:
         ans = mid
         e = mid - 1
         flag = True
-    
+        
     else:
         s = mid + 1
-
+        
 if flag:
     print(ans, check(ans) - check(ans - 1))
 else:
