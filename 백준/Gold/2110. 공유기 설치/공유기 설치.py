@@ -1,6 +1,11 @@
 import sys
-input = sys.stdin.readline
 
+input = lambda: sys.stdin.readline().strip()
+
+n, m = map(int, input().split())
+arr = [int(input()) for _ in range(n)]
+
+arr.sort()
 
 def check(x):
     idx = arr[0]
@@ -9,18 +14,12 @@ def check(x):
         if idx + x <= arr[i]:
             cnt += 1
             idx = arr[i]
-
+            
     return cnt >= (m - 1)
 
 
-n, m = map(int, input().split())
-arr = [int(input()) for _ in range(n)]
-
-arr.sort()
-
 ans = 0
-s = 0
-e = 100000000000
+s, e = 0, 1 << 31
 
 while s <= e:
     mid = (s + e) // 2
@@ -28,7 +27,7 @@ while s <= e:
     if check(mid):
         ans = mid
         s = mid + 1
-    
+        
     else:
         e = mid - 1
         
