@@ -2,36 +2,49 @@ import sys
 
 input = lambda: sys.stdin.readline().strip()
 
-A, B, C = map(int, input().split())
+a, b, c = map(int, input().split())
 
-arrA = sorted(map(int, input().split()))
-arrB = sorted(map(int, input().split()))
-arrC = sorted(map(int, input().split()))
+aarr = map(int, input().split())
+barr = sorted(map(int, input().split()))
+carr = sorted(map(int, input().split()))
 
+def check(num, target, nearest):
+    return abs(num - target) < abs(nearest - target)
 
-def check(target, arr):
+def bin_search(target, arr):
     s, e = 0, len(arr) - 1
+    tmp = arr[(s + e) // 2]
 
     while s <= e:
         mid = (s + e) // 2
+        
+        if check(arr[mid], target, tmp):
+            tmp = arr[mid]
+            
         if arr[mid] == target:
             return target
+        
         if arr[mid] < target:
             s = mid + 1
+            
         elif arr[mid] > target:
             e = mid - 1
+            
+            
+    return tmp
+
+
+
 
 
 ans = 1 << 31
-for anum in arrA:
-    for bnum in arrB:
-        target = (anum + bnum) // 2
-        tmp1 = check(target, arrC)
-        score1 = max(anum, bnum, tmp1) - min(anum, bnum, tmp1)
-
-        tmp2 = check(target, arrA)
-        score2 = max(bnum, anum, tmp2) - min(bnum, anum, tmp2)
-
-        ans = min(ans, min(score1, score2))
+for anum in aarr:
+    num1 = bin_search(anum, barr)
+    num2 = bin_search(anum, carr)
+    num3 = bin_search(num1, carr)
+    
+    ans = min(ans, abs(max(anum, max(num1, num2)) - min(anum, min(num1, num2))))
+    ans = min(ans, abs(max(anum, max(num1, num3)) - min(anum, min(num1, num3))))
+    
 
 print(ans)
