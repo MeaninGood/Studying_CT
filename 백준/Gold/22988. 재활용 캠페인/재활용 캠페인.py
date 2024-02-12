@@ -6,11 +6,9 @@ arr = list(map(int, sys.stdin.readline().split()))
 
 arr.sort()
 
-s = 0
-e = n-1
+s, e = 0, n - 1
 x = n
 cnt = 0
-
 for i in range(n)[::-1] :
     if arr[i] == m :
         cnt += 1
