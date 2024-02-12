@@ -14,6 +14,7 @@
 #     return a * b // tmp
 
 import sys
+
 input = lambda : sys.stdin.readline().strip()
     
 def gcd(a, b):
@@ -36,8 +37,8 @@ for i in range(a, b + 1, a):
         if i * j > a * b:
             break
         
-        if i * j == a * b and gcd(i, j) == a:
-            if i + j < mn:
-                x, y = i, j
-                mn = min(mn, i + j)
+        if i * j == a * b and gcd(i, j) == a and i + j < mn:
+            x, y = i, j
+            mn = min(mn, i + j)
+            
 print(x, y)
