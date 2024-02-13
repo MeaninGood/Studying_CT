@@ -6,15 +6,17 @@ n = int(input())
 arr = list(map(int, input().split()))
 
 total = 0
-cards = []
 for i in range(0, n, 2):
     total += arr[i]
-    if arr[i + 1] > arr[i]:
-        cards.append([arr[i + 1], arr[i]])
-    
-cards.sort(key = lambda x: -abs(x[1] - x[0]))
-tmp = total - cards[0][1] + cards[0][0]
-print(cards)
-print(total, tmp)
 
-print(max(tmp, total))
+mx, ans = total, total
+for i in range(n - 1, -1, -2):
+    mx += arr[i] - arr[i - 1]
+    ans = max(ans, mx)
+
+mx = total
+for i in range(n - 2, 0, -2):
+    mx += arr[i - 1] - arr[i]
+    ans = max(ans, mx)
+
+print(ans)
