@@ -5,7 +5,6 @@ input = lambda: sys.stdin.readline().strip()
 n, m = map(int, input().split())
 arr = sorted(list(input().split()))
 
-print(arr)
 target = ["a", "e", "i", "o", "u"]
 
 res = ["" for _ in range(n)]
@@ -13,12 +12,14 @@ res = ["" for _ in range(n)]
 
 def recur(cur):
     if cur == n:
-        flag = False
+        cnt1, cnt2 = 0, 0
         for i in res:
             if i in target:
-                flag = True
+                cnt1 += 1
+            else:
+                cnt2 += 1
 
-        if flag:
+        if cnt1 >= 1 and cnt2 >= 2:
             print("".join(res))
 
         return
@@ -32,10 +33,7 @@ def recur(cur):
 
         res[cur] = arr[i]
         recur(cur + 1)
-        res[cur] = "#"
+        res[cur] = ""
 
 
 recur(0)
-
-print("" > "a")
-print("" < "a")
