@@ -11,12 +11,12 @@ dp = [[-1 for _ in range(n)] for _ in range(n)]
 
 
 def recur(cur, cnt):
-    ret = 0
 
-    if cur > n:
+    if cur > n or cnt > k:
         return -10000000000
 
     if cur == n:
+        total = 0
         if cnt == k:
             # 고른 애들만 보기
             for i in range(n - 1):
@@ -27,22 +27,19 @@ def recur(cur, cnt):
                     if not visited[j]:
                         continue
 
-                    ret += arr[i][j]
+                    total += arr[i][j]
 
-            print(ret)
-
-        return ret
+        return total
 
     if dp[cur][cnt] != -1:
         return dp[cur][cnt]
 
-    for i in range(n):
-        if visited[i]:
-            continue
+    visited[cur] = True
+    ntotal1 = recur(cur + 1, cnt + 1)
+    visited[cur] = False
+    ntotal2 = recur(cur + 1, cnt)
 
-        visited[i] = True
-        dp[cur][cnt] = max(recur(cur + 1, cnt + 1), dp[cur][cnt])
-        visited[i] = False
+    dp[cur][cnt] = max(ntotal1, ntotal2)
 
     return dp[cur][cnt]
 
